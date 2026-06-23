@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APP Retention Risk Audit | The MBA PA</title>
+  <meta name="description" content="A practical audit to help cardiac surgery leaders spot hidden turnover risk across onboarding, role clarity, feedback, and team integration." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .resource-hero { padding: 6rem 0 3rem; text-align: center; }
+    .resource-hero h1 { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .resource-hero .eyebrow { margin-bottom: 0.5rem; }
+    .resource-hero p { max-width: 600px; margin: 0 auto 2rem; color: var(--text-secondary); }
+    .resource-form { max-width: 480px; margin: 0 auto; padding: 2.5rem; background: var(--surface); border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+    .resource-form label { display: block; font-weight: 600; margin-bottom: 0.4rem; }
+    .resource-form input { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; margin-bottom: 1rem; font-family: inherit; }
+    .resource-form button { width: 100%; }
+    .resource-benefits { max-width: 600px; margin: 3rem auto 0; padding: 0 1rem; }
+    .resource-benefits h3 { margin-bottom: 1rem; }
+    .resource-benefits ul { list-style: none; padding: 0; }
+    .resource-benefits li { padding: 0.5rem 0 0.5rem 1.75rem; position: relative; }
+    .resource-benefits li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .disclaimer { max-width: 600px; margin: 2rem auto 0; padding: 1rem; font-size: 0.85rem; color: var(--text-secondary); text-align: center; }
+    .download-section { display: none; max-width: 480px; margin: 2rem auto; padding: 2.5rem; background: var(--accent-light); border-radius: 12px; text-align: center; }
+    .download-section.visible { display: block; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="logo">The MBA PA</a>
+      <ul class="nav-links">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#consulting">Consulting</a></li>
+        <li><a href="/#courses">Courses</a></li>
+        <li><a href="/#resources">Resources</a></li>
+        <li><a href="/#contact" class="btn btn-sm">Work With Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="resource-hero">
+    <div class="container">
+      <p class="eyebrow">Free Resource</p>
+      <h1>APP Retention Risk Audit</h1>
+      <p>A practical tool for APP leaders to pressure-test the five parts of the system that quietly determine whether strong hires stabilize and stay.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <form id="capture-form" class="resource-form" action="https://formspree.io/f/pol@themba-pa.com" method="POST">
+      <input type="hidden" name="_subject" value="APP Retention Risk Audit — New Download" />
+      <input type="hidden" name="_next" value="?download=ready" />
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+      <label for="email">Work Email</label>
+      <input type="email" id="email" name="email" placeholder="you@hospital.org" required />
+
+      <label for="role">Role</label>
+      <input type="text" id="role" name="role" placeholder="e.g. Lead APP, Program Director, CVOR Manager" />
+
+      <button type="submit" class="btn btn-primary">Get the Audit</button>
+      <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.75rem;">No spam. Your info stays private.</p>
+    </form>
+
+    <div id="download-box" class="download-section">
+      <h3 style="margin-bottom:0.75rem;">Your audit is ready</h3>
+      <p style="margin-bottom:1.25rem;">Download the APP Retention Risk Audit and start spotting turnover risk before it becomes turnover.</p>
+      <a href="https://drive.google.com/file/d/1yzRPMe2OK-v6Y45LTOZ0MrkBNYCRBLBk/view" class="btn btn-primary" target="_blank" rel="noopener">Download Now</a>
+      <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:1rem;">Also sent to your email. Check spam if you don't see it.</p>
+    </div>
+
+    <div class="resource-benefits">
+      <h3>What This Audit Covers</h3>
+      <ul>
+        <li>Role clarity — does your team know what "good" looks like?</li>
+        <li>Onboarding consistency — is every new APP getting the same foundation?</li>
+        <li>Feedback loops — are you catching issues before they become resignations?</li>
+        <li>Team integration — does your culture retain or quietly repel?</li>
+        <li>Work design — is the job itself sustainable?</li>
+      </ul>
+    </div>
+
+    <p class="disclaimer">This is an operational leadership tool, not a clinical assessment or patient-care directive.</p>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-logo">The MBA PA</p>
+      <p class="footer-sub">Pol Vedar, PA-C, MBA — Cardiothoracic Surgery</p>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/polvedar/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://linktr.ee/themba.pa" target="_blank" rel="noopener">Linktree</a>
+        <a href="mailto:pol@themba-pa.com">Email</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 The MBA PA. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    if (window.location.search.includes('download=ready')) {
+      document.getElementById('download-box').classList.add('visible');
+      document.getElementById('download-box').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
