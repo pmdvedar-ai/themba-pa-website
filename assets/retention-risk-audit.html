@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>APP Retention Risk Audit | The MBA PA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+<style>
+  @page { size: letter; margin: 0.6in 0.7in; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #3A3F4A;
+    font-size: 11px;
+    line-height: 1.65;
+    max-width: 7.1in;
+    margin: 0 auto;
+    padding: 0.5in 0;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #1B2A4A 0%, #243558 100%);
+    border-radius: 8px;
+    padding: 30px 32px;
+    margin-bottom: 28px;
+  }
+  .eyebrow {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #C9973A; margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px; color: #FFFFFF; line-height: 1.15; margin-bottom: 10px;
+  }
+  .hero .subtitle {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px; color: #C9973A; margin-bottom: 18px; font-weight: 700;
+  }
+  .hero .byline {
+    font-size: 12px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;
+  }
+  .hero .byline-sub {
+    font-size: 12px; font-weight: 700; color: #FFFFFF; margin-bottom: 12px;
+  }
+  .hero .desc {
+    font-size: 11px; color: #D8DCE5; line-height: 1.6;
+  }
+
+  .card {
+    background: #F6EFE3; border-radius: 8px; padding: 22px 26px;
+    margin-bottom: 24px;
+  }
+  .card h3 {
+    font-size: 15px; font-weight: 700; color: #1B2A4A; margin-bottom: 12px;
+  }
+  .card p, .card li {
+    font-size: 11px; color: #3A3F4A; line-height: 1.65;
+  }
+  .card ul {
+    list-style: none; padding-left: 0;
+  }
+  .card li {
+    padding: 6px 0 6px 16px; position: relative;
+  }
+  .card li::before {
+    content: ''; position: absolute; left: 0; top: 12px;
+    width: 5px; height: 5px; border-radius: 50%; background: #C9973A;
+  }
+  .card li strong { color: #1B2A4A; }
+
+  .divider {
+    border: none; border-top: 1px solid #D9D9D9;
+    margin: 28px 0;
+  }
+
+  .section-header {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: linear-gradient(90deg, #F5F3EF 0%, #FFFFFF 100%);
+    border-radius: 8px; padding: 18px 22px; margin-bottom: 16px;
+  }
+  .section-header .accent {
+    width: 4px; min-height: 48px; background: #C9973A;
+    border-radius: 2px; flex-shrink: 0; align-self: stretch;
+  }
+  .section-header h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px; color: #1B2A4A; margin-bottom: 4px; font-weight: 700;
+  }
+  .section-header p {
+    font-size: 11px; color: #5A5F6A;
+  }
+
+  .rating-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 0; border-bottom: 1px solid #E5E7EB;
+  }
+  .rating-row:last-child { border-bottom: none; }
+  .rating-label {
+    flex: 1; font-size: 11px; font-weight: 500; color: #1B2A4A;
+  }
+  .rating-scale {
+    display: flex; gap: 6px;
+  }
+  .rating-scale span {
+    width: 22px; height: 22px; border-radius: 4px;
+    border: 1.5px solid #D9D9D9; display: flex; align-items: center;
+    justify-content: center; font-size: 9px; color: #9CA3AF;
+  }
+
+  .table-grid {
+    display: grid; grid-template-columns: 1.2fr 2fr 1.5fr;
+    gap: 0; border: 1px solid #D9D9D9; border-radius: 6px; overflow: hidden;
+    margin: 12px 0;
+  }
+  .table-grid .th {
+    background: #1B2A4A; color: #FFFFFF; font-size: 10px;
+    font-weight: 700; padding: 8px 12px; text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .table-grid .td {
+    padding: 8px 12px; font-size: 10.5px; color: #3A3F4A;
+    border-top: 1px solid #E5E7EB; background: #FFFFFF;
+    line-height: 1.5;
+  }
+
+  .score-box {
+    background: #FFFFFF; border: 1.5px solid #1B2A4A;
+    border-radius: 8px; padding: 18px 22px; margin: 16px 0;
+  }
+  .score-box h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px; color: #1B2A4A; margin-bottom: 8px;
+  }
+  .score-bar {
+    display: flex; gap: 3px; margin: 10px 0;
+  }
+  .score-bar .seg {
+    height: 8px; border-radius: 4px;
+  }
+
+  .footer {
+    text-align: center; padding-top: 24px; margin-top: 24px;
+    border-top: 1.5px solid #D9D9D9;
+  }
+  .footer p {
+    font-size: 10px; color: #9CA3AF; margin-bottom: 2px;
+  }
+
+  .page-break { page-break-before: always; }
+
+  @media print {
+    body { padding: 0; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hero + How to Use -->
+<div class="hero">
+  <p class="eyebrow">Free Resource &nbsp;|&nbsp; The MBA PA</p>
+  <h1>APP Retention<br>Risk Audit</h1>
+  <p class="subtitle">A Systematic Framework to Pressure-Test Your Program's Retention Health</p>
+  <p class="byline">By Pol Martin D. Vedar, PA-C, MBA</p>
+  <p class="byline-sub">The MBA PA</p>
+  <p class="desc">A practical diagnostic tool for Lead APPs, Program Directors, and CVOR Managers who want to identify hidden turnover risk across the five domains that quietly determine whether strong hires stabilize — or disengage long before anyone says it.</p>
+</div>
+
+<div class="card">
+  <h3>How to Use This Audit</h3>
+  <ul>
+    <li><strong>For Lead APPs and program leaders:</strong> Score your program honestly across five domains. This is a diagnostic, not a performance review — low scores are opportunities, not failures.</li>
+    <li><strong>For institutional decision-makers:</strong> Use the composite scores to build a business case for onboarding investment. Each domain maps to measurable turnover risk.</li>
+    <li><strong>Re-audit quarterly:</strong> Track changes over time. Improvement matters more than any single snapshot.</li>
+  </ul>
+</div>
+
+<hr class="divider"/>
+
+<!-- Domain 1 -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>1) Role Clarity</h3>
+    <p>Does your team know what "good" looks like — across every phase of their role?</p>
+  </div>
+</div>
+
+<p style="margin-bottom:14px;">Role ambiguity is the single most common driver of early APP turnover. When expectations are tribal knowledge — passed verbally from preceptor to trainee — every new hire starts with a different standard. Audit the following:</p>
+
+<div class="table-grid">
+  <div class="th">Dimension</div><div class="th">What to Audit</div><div class="th">Red Flag If…</div>
+  <div class="td">Clinical scope</div><div class="td">Written clinical privileges and procedure list per APP role</div><div class="td">Scope defined by "what the surgeon prefers" rather than documented standards</div>
+  <div class="td">Call expectations</div><div class="td">Documented call frequency, response times, and backup structure</div><div class="td">Call duties handed down verbally; no written rotation</div>
+  <div class="td">Career ladder</div><div class="td">Published advancement criteria (EVH independence, first-assist levels, precepting readiness)</div><div class="td">No formal levels; advancement is "when I think you're ready"</div>
+  <div class="td">OR expectations</div><div class="td">Case-specific protocols for CABG, valve, LVAD, transplant</div><div class="td">OR duties vary by surgeon preference with no written baseline</div>
+  <div class="td">Non-OR duties</div><div class="td">Clinic, rounds, database, teaching expectations clearly defined</div><div class="td">Non-OR tasks accumulate without boundaries or acknowledgment</div>
+</div>
+
+<p style="font-size:11px; color:#5A5F6A; margin-top:12px;"><strong>Scoring:</strong> Rate your program 1–5 on each dimension. 1 = undocumented / purely verbal. 5 = written, published, reviewed annually.</p>
+
+<hr class="divider"/>
+
+<!-- Domain 2 -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>2) Onboarding Consistency</h3>
+    <p>Is every new APP getting the same foundation — or does it depend on who trains them?</p>
+  </div>
+</div>
+
+<p style="margin-bottom:14px;">Onboarding inconsistency is the second-biggest predictor of differential team performance. When two APPs hired six months apart have wildly different competencies, the system — not the individuals — is the problem.</p>
+
+<div class="card">
+  <h3>Onboarding Consistency Checklist</h3>
+  <ul>
+    <li><strong>Written 90-day plan:</strong> Does every new hire receive a structured onboarding document with week-by-week milestones? A verbal "you'll figure it out" is not a plan.</li>
+    <li><strong>Preceptor assignment:</strong> Is a specific preceptor named before day one, with protected time? Or is precepting ad hoc?</li>
+    <li><strong>Skill gate criteria:</strong> Are there explicit, written criteria for advancing from observing → assisting → independent for each procedure?</li>
+    <li><strong>Check-in cadence:</strong> Are there scheduled 30/60/90-day check-ins with the Lead APP — not just casual hallway conversations?</li>
+    <li><strong>Remediation pathway:</strong> If a trainee isn't meeting milestones, is there a documented process — or does it get handled informally until it's a crisis?</li>
+    <li><strong>Completion standard:</strong> Is there a formal sign-off process marking the end of onboarding? Without it, trainees stay in perpetual limbo.</li>
+  </ul>
+</div>
+
+<div class="page-break"></div>
+
+<!-- PAGE 2 -->
+<div class="hero" style="padding:22px 28px; margin-bottom:22px;">
+  <p class="eyebrow">APP Retention Risk Audit &nbsp;—&nbsp; Page 2</p>
+  <h1 style="font-size:26px;">Domains 3–5<br>&amp; Composite Score</h1>
+</div>
+
+<!-- Domain 3 -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>3) Feedback Loops</h3>
+    <p>Are you catching issues before they become resignations?</p>
+  </div>
+</div>
+
+<p style="margin-bottom:14px;">The most dangerous retention signal is silence. APPs who stop giving feedback have already started disengaging. A healthy program has structured feedback flowing in both directions.</p>
+
+<div class="card">
+  <h3>Feedback Loop Audit</h3>
+  <ul>
+    <li><strong>Structured 1:1s:</strong> Does every APP have a protected monthly or quarterly 1:1 with their Lead APP that isn't canceled when it gets busy?</li>
+    <li><strong>Upward feedback:</strong> Is there a mechanism for APPs to evaluate their preceptors and program leadership — anonymously if needed?</li>
+    <li><strong>Exit interviews:</strong> When someone leaves, is there a structured exit interview? If you've had recent departures without understanding why, that's a critical gap.</li>
+    <li><strong>Stay interviews:</strong> Are you talking to the APPs who are still there about what keeps them — or only focusing on those who leave?</li>
+    <li><strong>Surgeon feedback:</strong> Is there a structured process for surgeons to provide feedback on APP performance — not just complaints in the lounge?</li>
+    <li><strong>Action on feedback:</strong> When feedback is collected, does anything change? Nothing erodes trust faster than asking for input and ignoring it.</li>
+  </ul>
+</div>
+
+<hr class="divider"/>
+
+<!-- Domain 4 -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>4) Team Integration</h3>
+    <p>Does your culture retain — or quietly repel?</p>
+  </div>
+</div>
+
+<p style="margin-bottom:14px;">Culture is the retention variable most leaders acknowledge but few actively manage. Integration isn't about pizza parties — it's about whether APPs feel they belong in the room, are trusted with meaningful work, and have a voice in decisions that affect them.</p>
+
+<div class="table-grid" style="grid-template-columns:1fr 1.5fr 1fr 1.5fr;">
+  <div class="th">Signal</div><div class="th">Healthy Program</div><div class="th">Warning Sign</div><div class="th">Critical Risk</div>
+  <div class="td">OR trust</div><div class="td">APPs first-assist across all case types independently</div><div class="td">Surgeons request specific APPs; newer hires excluded</div><div class="td">APPs treated as interchangeable techs rather than clinicians</div>
+  <div class="td">Decision voice</div><div class="td">APPs present at quality meetings; input solicited</div><div class="td">APP input invited but consistently overridden without explanation</div><div class="td">APPs not in the room for decisions that affect their work</div>
+  <div class="td">Social cohesion</div><div class="td">Team norms exist; new hires are actively included</div><div class="td">Cliques form; new hires left to navigate alone</div><div class="td">New hires eat lunch alone for the first 3 months</div>
+  <div class="td">Professional growth</div><div class="td">CE/conference support; role expansion pathways visible</div><div class="td">Growth discussed but never funded or scheduled</div><div class="td">No conversation about career progression has ever occurred</div>
+</div>
+
+<hr class="divider"/>
+
+<!-- Domain 5 -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>5) Work Design</h3>
+    <p>Is the job itself sustainable — or is it designed for burnout?</p>
+  </div>
+</div>
+
+<p style="margin-bottom:14px;">Even the most engaged APP will eventually leave a job that's structurally unsustainable. Work design covers hours, call burden, scope creep, and whether compensation matches contribution.</p>
+
+<div class="card">
+  <h3>Work Design Pressure Test</h3>
+  <ul>
+    <li><strong>Hours reality check:</strong> Are contracted hours close to actual hours? If everyone works 50+ hours on a 40-hour contract, that's a design problem — not individual endurance.</li>
+    <li><strong>Call burden equity:</strong> Is call distributed transparently and fairly — or do senior team members quietly offload onto newer hires?</li>
+    <li><strong>Scope creep management:</strong> When new responsibilities are added (database, teaching, QI projects), are old ones removed — or does scope only expand?</li>
+    <li><strong>Compensation benchmarking:</strong> When was the last formal market analysis of APP salaries in your region? "We pay competitively" without data is a retention vulnerability.</li>
+    <li><strong>Schedule predictability:</strong> Can APPs plan their lives more than two weeks out? Unpredictable schedules disproportionately drive experienced APPs away.</li>
+    <li><strong>Recovery time:</strong> Is there adequate time off between call shifts and regular shifts? Cumulative fatigue erodes clinical judgment and personal resilience simultaneously.</li>
+  </ul>
+</div>
+
+<div class="page-break"></div>
+
+<!-- PAGE 3: Composite Scoring -->
+<div class="hero" style="padding:22px 28px; margin-bottom:22px;">
+  <p class="eyebrow">APP Retention Risk Audit &nbsp;—&nbsp; Page 3</p>
+  <h1 style="font-size:26px;">Composite Scoring<br>&amp; Action Planning</h1>
+</div>
+
+<div class="card">
+  <h3>Domain Scoring Worksheet</h3>
+  <p style="margin-bottom:14px;">Rate each domain 1–5 (1 = critical risk, 5 = fully systematized). Be honest — low scores are the most valuable data this audit produces.</p>
+
+  <div class="rating-row">
+    <span class="rating-label">1. Role Clarity</span>
+    <span class="rating-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></span>
+    <span style="font-size:11px;color:#5A5F6A;">Score: ___</span>
+  </div>
+  <div class="rating-row">
+    <span class="rating-label">2. Onboarding Consistency</span>
+    <span class="rating-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></span>
+    <span style="font-size:11px;color:#5A5F6A;">Score: ___</span>
+  </div>
+  <div class="rating-row">
+    <span class="rating-label">3. Feedback Loops</span>
+    <span class="rating-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></span>
+    <span style="font-size:11px;color:#5A5F6A;">Score: ___</span>
+  </div>
+  <div class="rating-row">
+    <span class="rating-label">4. Team Integration</span>
+    <span class="rating-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></span>
+    <span style="font-size:11px;color:#5A5F6A;">Score: ___</span>
+  </div>
+  <div class="rating-row">
+    <span class="rating-label">5. Work Design</span>
+    <span class="rating-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></span>
+    <span style="font-size:11px;color:#5A5F6A;">Score: ___</span>
+  </div>
+
+  <div style="margin-top:18px; padding-top:14px; border-top:1.5px solid #D9D9D9;">
+    <p style="font-weight:700; color:#1B2A4A;">Composite Score: ___ / 25</p>
+  </div>
+</div>
+
+<div class="score-box">
+  <h4>Interpreting Your Score</h4>
+  <table style="width:100%; border-collapse:collapse; font-size:10.5px;">
+    <tr style="border-bottom:1px solid #E5E7EB;">
+      <td style="padding:6px 8px; font-weight:700; color:#1B2A4A;">20–25</td>
+      <td style="padding:6px 8px; color:#3A3F4A;">Systematized. Your program has structural retention health. Focus: maintain and refine.</td>
+    </tr>
+    <tr style="border-bottom:1px solid #E5E7EB;">
+      <td style="padding:6px 8px; font-weight:700; color:#C9973A;">15–19</td>
+      <td style="padding:6px 8px; color:#3A3F4A;">Developing. Good instincts but gaps exist. Focus: shore up the lowest-scoring domain.</td>
+    </tr>
+    <tr style="border-bottom:1px solid #E5E7EB;">
+      <td style="padding:6px 8px; font-weight:700; color:#C9973A;">10–14</td>
+      <td style="padding:6px 8px; color:#3A3F4A;">Vulnerable. Multiple domains need attention. Turnover risk is real and present.</td>
+    </tr>
+    <tr>
+      <td style="padding:6px 8px; font-weight:700; color:#CC3333;">Below 10</td>
+      <td style="padding:6px 8px; color:#3A3F4A;">Critical. Retention is an immediate operational priority. Recommend structured intervention.</td>
+    </tr>
+  </table>
+</div>
+
+<hr class="divider"/>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>Action Planning: From Score to Strategy</h3>
+    <p>Turn your audit results into a prioritization framework.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Priority Matrix</h3>
+  <ol style="padding-left:18px; margin-top:8px;">
+    <li style="margin-bottom:8px;"><strong>Identify your lowest-scoring domain.</strong> This is your highest-leverage intervention point. A one-point improvement in your weakest area reduces more turnover risk than polishing what's already working.</li>
+    <li style="margin-bottom:8px;"><strong>Map each domain score to a concrete action.</strong> "Improve feedback loops" is not an action. "Implement protected monthly 1:1s with documented agenda template by Q3" is an action.</li>
+    <li style="margin-bottom:8px;"><strong>Assign ownership and timeline.</strong> Each action needs one named owner and a deadline. Retention improvement without accountability is just good intentions.</li>
+    <li><strong>Re-audit in 90 days.</strong> Measure the same five domains. Compare scores. Did your interventions move the needle? If not, the intervention — not the audit — needs adjustment.</li>
+  </ol>
+</div>
+
+<div class="footer">
+  <p style="font-family:'Playfair Display',Georgia,serif; font-size:13px; color:#1B2A4A; font-weight:700;">The MBA PA</p>
+  <p>Pol Vedar, PA-C, MBA &mdash; Cardiothoracic Surgery</p>
+  <p>pol@themba-pa.com &nbsp;|&nbsp; themba-pa.com</p>
+  <p style="margin-top:10px; font-size:9px; color:#9CA3AF;">This is an operational leadership tool, not a clinical assessment or patient-care directive.</p>
+  <p style="font-size:9px; color:#9CA3AF;">&copy; 2026 The MBA PA. All rights reserved.</p>
+</div>
+
+</body>
+</html>

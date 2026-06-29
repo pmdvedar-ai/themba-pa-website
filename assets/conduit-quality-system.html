@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Conduit Quality Assurance System | The MBA PA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+<style>
+  @page { size: letter; margin: 0.6in 0.7in; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #3A3F4A;
+    font-size: 11px;
+    line-height: 1.65;
+    max-width: 7.1in;
+    margin: 0 auto;
+    padding: 0.5in 0;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #1B2A4A 0%, #243558 100%);
+    border-radius: 8px;
+    padding: 30px 32px;
+    margin-bottom: 28px;
+  }
+  .eyebrow {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #C9973A; margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px; color: #FFFFFF; line-height: 1.15; margin-bottom: 10px;
+  }
+  .hero .subtitle {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px; color: #C9973A; margin-bottom: 18px; font-weight: 700;
+  }
+  .hero .byline {
+    font-size: 12px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;
+  }
+  .hero .byline-sub {
+    font-size: 12px; font-weight: 700; color: #FFFFFF; margin-bottom: 12px;
+  }
+  .hero .desc {
+    font-size: 11px; color: #D8DCE5; line-height: 1.6;
+  }
+
+  .card {
+    background: #F6EFE3; border-radius: 8px; padding: 22px 26px;
+    margin-bottom: 24px;
+  }
+  .card h3 {
+    font-size: 15px; font-weight: 700; color: #1B2A4A; margin-bottom: 12px;
+  }
+  .card p, .card li {
+    font-size: 11px; color: #3A3F4A; line-height: 1.65;
+  }
+  .card ul {
+    list-style: none; padding-left: 0;
+  }
+  .card li {
+    padding: 6px 0 6px 16px; position: relative;
+  }
+  .card li::before {
+    content: ''; position: absolute; left: 0; top: 12px;
+    width: 5px; height: 5px; border-radius: 50%; background: #C9973A;
+  }
+  .card li strong { color: #1B2A4A; }
+
+  .divider {
+    border: none; border-top: 1px solid #D9D9D9;
+    margin: 28px 0;
+  }
+
+  .section-header {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: linear-gradient(90deg, #F5F3EF 0%, #FFFFFF 100%);
+    border-radius: 8px; padding: 18px 22px; margin-bottom: 16px;
+  }
+  .section-header .accent {
+    width: 4px; min-height: 48px; background: #C9973A;
+    border-radius: 2px; flex-shrink: 0; align-self: stretch;
+  }
+  .section-header h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px; color: #1B2A4A; margin-bottom: 4px; font-weight: 700;
+  }
+  .section-header p {
+    font-size: 11px; color: #5A5F6A;
+  }
+
+  .table-grid {
+    display: grid; gap: 0; border: 1px solid #D9D9D9; border-radius: 6px; overflow: hidden;
+    margin: 12px 0;
+  }
+  .table-grid .th {
+    background: #1B2A4A; color: #FFFFFF; font-size: 10px;
+    font-weight: 700; padding: 8px 12px; text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .table-grid .td {
+    padding: 8px 12px; font-size: 10.5px; color: #3A3F4A;
+    border-top: 1px solid #E5E7EB; background: #FFFFFF;
+    line-height: 1.5;
+  }
+
+  .ladder-step {
+    display: flex; gap: 14px; padding: 14px 0;
+    border-bottom: 1px solid #E5E7EB; align-items: flex-start;
+  }
+  .ladder-step:last-child { border-bottom: none; }
+  .ladder-level {
+    background: #1B2A4A; color: #FFFFFF; border-radius: 6px;
+    width: 44px; height: 44px; display: flex; align-items: center;
+    justify-content: center; font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px; font-weight: 700; flex-shrink: 0;
+  }
+  .ladder-level.gold { background: #C9973A; }
+  .ladder-content { flex: 1; }
+  .ladder-content h4 { font-size: 13px; color: #1B2A4A; margin-bottom: 4px; font-weight: 700; }
+  .ladder-content p { font-size: 10.5px; color: #3A3F4A; }
+
+  .dashboard-row {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    padding: 8px 0; border-bottom: 1px solid #E5E7EB;
+    font-size: 10.5px;
+  }
+  .dashboard-row.header {
+    font-weight: 700; color: #1B2A4A; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    border-bottom: 2px solid #1B2A4A;
+  }
+  .dashboard-row:last-child { border-bottom: none; }
+
+  .checklist-item {
+    display: flex; gap: 10px; padding: 8px 0;
+    border-bottom: 1px solid #E5E7EB; align-items: flex-start;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 16px; height: 16px; border: 1.5px solid #9CA3AF;
+    border-radius: 3px; flex-shrink: 0; margin-top: 2px;
+  }
+
+  .footer {
+    text-align: center; padding-top: 24px; margin-top: 24px;
+    border-top: 1.5px solid #D9D9D9;
+  }
+  .footer p {
+    font-size: 10px; color: #9CA3AF; margin-bottom: 2px;
+  }
+
+  .page-break { page-break-before: always; }
+
+  @media print {
+    body { padding: 0; }
+    .page-break { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hero + How to Use + Grading Standards -->
+<div class="hero">
+  <p class="eyebrow">Free Resource &nbsp;|&nbsp; The MBA PA</p>
+  <h1>Conduit Quality<br>Assurance System</h1>
+  <p class="subtitle">A Framework for Building Conduit Quality Programs That Survive Turnover</p>
+  <p class="byline">By Pol Martin D. Vedar, PA-C, MBA</p>
+  <p class="byline-sub">The MBA PA</p>
+  <p class="desc">A comprehensive system for cardiac surgery programs to define, measure, and maintain conduit quality — including grading standards, a four-stage harvester competency ladder, quality dashboards, a turnover survival protocol, and a program self-assessment across seven dimensions.</p>
+</div>
+
+<div class="card">
+  <h3>How to Use This System</h3>
+  <ul>
+    <li><strong>For program leaders:</strong> Use the grading standards and competency ladder to establish objective, written criteria for conduit quality. Eliminate subjective "good enough" assessments.</li>
+    <li><strong>For harvesters and preceptors:</strong> Use the ladder to track individual progression and identify specific skill gaps before they affect patient outcomes.</li>
+    <li><strong>For quality committees:</strong> Use the dashboard metrics to monitor program-level conduit quality trends and detect deterioration before it becomes a pattern.</li>
+    <li><strong>When harvesters leave:</strong> Activate the turnover survival protocol to maintain quality standards during transitions — the system, not any individual, protects outcomes.</li>
+  </ul>
+</div>
+
+<hr class="divider"/>
+
+<!-- Component 1: Grading Standards -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>1) Conduit Quality Grading Standards</h3>
+    <p>Define what "good" looks like — objectively, consistently, across all harvesters.</p>
+  </div>
+</div>
+
+<p style="margin-bottom:14px;">Without written grading criteria, conduit quality assessment is subjective — "it looked fine" is not a quality standard. Use the following framework to establish program-wide grading for endoscopic vein, radial artery, and open conduit harvesting.</p>
+
+<div class="table-grid" style="grid-template-columns:100px 1fr 1fr 1fr;">
+  <div class="th">Conduit</div>
+  <div class="th">Grade A — Excellent</div>
+  <div class="th">Grade B — Acceptable</div>
+  <div class="th">Grade C — Needs Improvement</div>
+  <div class="td" style="font-weight:700;">EVH (Vein)</div>
+  <div class="td">No visible thermal injury. Intact adventitia. No side-branch avulsions. Conduit length adequate for all targets. Harvest time within program benchmarks.</div>
+  <div class="td">Minor adventitial disruptions ≤2. One small thermal mark. Side branches clipped cleanly. Length adequate. Time within 120% of benchmark.</div>
+  <div class="td">Multiple thermal marks, adventitial tears, or branch avulsions. Segment loss requiring additional harvest. Time exceeds 150% of benchmark.</div>
+  <div class="td" style="font-weight:700;">Radial Artery</div>
+  <div class="td">No palpable spasm at harvest completion. Intact endothelium. Adequate length with clean pedicle. Papaverine response documented.</div>
+  <div class="td">Mild spasm resolving with papaverine. Minor adventitial disruption. Pedicle largely intact. Length adequate.</div>
+  <div class="td">Persistent spasm. Endothelial injury visible. Uncontrolled branching. Segment loss or conversion required.</div>
+  <div class="td" style="font-weight:700;">Open Vein</div>
+  <div class="td">Clean dissection with minimal adventitial handling. No scalpel or scissor injuries to conduit. Side branches ligated cleanly. Wound closure optimal.</div>
+  <div class="td">Minor handling marks. One small adventitial nick without full-thickness injury. Branches controlled. Acceptable wound.</div>
+  <div class="td">Multiple handling injuries. Full-thickness defects. Uncontrolled branches. Excessive wound tension or poor closure.</div>
+</div>
+
+<p style="font-size:11px; color:#5A5F6A; margin-top:12px;"><strong>Implementation:</strong> Assign a grade to every harvested conduit. Track grades by harvester. Review grade distributions monthly. A harvester whose Grade C rate exceeds 10% needs targeted remediation — not more autonomy.</p>
+
+<div class="page-break"></div>
+
+<!-- PAGE 2: Competency Ladder -->
+<div class="hero" style="padding:22px 28px; margin-bottom:22px;">
+  <p class="eyebrow">Conduit Quality Assurance System &nbsp;—&nbsp; Page 2</p>
+  <h1 style="font-size:26px;">Harvester Competency Ladder<br>&amp; Quality Dashboard</h1>
+</div>
+
+<!-- Component 2: Competency Ladder -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>2) Four-Stage Harvester Competency Ladder</h3>
+    <p>Written gate criteria for advancing from observer to independent harvester — with preceptor validation at every stage.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ladder-step">
+    <div class="ladder-level">1</div>
+    <div class="ladder-content">
+      <h4>Observer — "See One"</h4>
+      <p>Observes ≥20 harvests across all conduit types (EVH vein, radial, open). Demonstrates knowledge of equipment setup, troubleshooting common device errors, and anatomy review. Passes written anatomy and device competency quiz. <strong>Gate criteria:</strong> Preceptor signs off on equipment competency and anatomy knowledge. Minimum 20 observed cases documented.</p>
+    </div>
+  </div>
+  <div class="ladder-step">
+    <div class="ladder-level gold">2</div>
+    <div class="ladder-content">
+      <h4>Supervised Harvester — "Do One With Help"</h4>
+      <p>Performs ≥30 harvests under direct preceptor supervision. Preceptor is scrubbed and immediately available. Focus on developing tactile feel, spatial awareness, and branch management. <strong>Gate criteria:</strong> ≥90% Grade A or B conduits over last 10 cases. Preceptor confirms readiness for independent progression. Average harvest time within 130% of program benchmark.</p>
+    </div>
+  </div>
+  <div class="ladder-step">
+    <div class="ladder-level">3</div>
+    <div class="ladder-content">
+      <h4>Provisional Independent — "Teach One"</h4>
+      <p>Independent harvesting with preceptor available in-house for backup. Performs ≥50 cases independently. Begins precepting Stage 1-2 harvesters under supervision. <strong>Gate criteria:</strong> ≥95% Grade A or B conduits. Zero unplanned conversions to open in last 20 cases. Preceptor evaluation of precepting readiness. Lead APP review of grade distribution.</p>
+    </div>
+  </div>
+  <div class="ladder-step">
+    <div class="ladder-level gold">4</div>
+    <div class="ladder-content">
+      <h4>Master Harvester / Preceptor — "See One, Do One, Teach One"</h4>
+      <p>Full independent practice. Qualified to precept all stages. Serves as first-call backup for difficult harvests. Participates in monthly quality review. Maintains ≥95% Grade A or B conduits. <strong>Ongoing requirement:</strong> Quarterly grade audit — if Grade C rate exceeds 5%, automatic review with Lead APP. Annual preceptor re-certification.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- Component 3: Quality Dashboard -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>3) Conduit Quality Dashboard</h3>
+    <p>Monthly metrics and thresholds for program-level quality monitoring.</p>
+  </div>
+</div>
+
+<p style="margin-bottom:14px;">Track these metrics monthly. Review at program quality meetings. Trends matter more than any single month's data. Set program-specific thresholds and escalate when thresholds are breached for two consecutive months.</p>
+
+<div class="card">
+  <h3>Monthly Dashboard Template</h3>
+  <div class="dashboard-row header">
+    <span>Metric</span><span>Target</span><span>Threshold</span><span>Current Month</span>
+  </div>
+  <div class="dashboard-row">
+    <span>Overall Grade A rate</span><span>≥ 70%</span><span>&lt; 60%</span><span>___%</span>
+  </div>
+  <div class="dashboard-row">
+    <span>Grade C rate</span><span>≤ 5%</span><span>&gt; 10%</span><span>___%</span>
+  </div>
+  <div class="dashboard-row">
+    <span>Unplanned conversion rate</span><span>≤ 2%</span><span>&gt; 5%</span><span>___%</span>
+  </div>
+  <div class="dashboard-row">
+    <span>Avg harvest time (EVH)</span><span>≤ 25 min</span><span>&gt; 35 min</span><span>___ min</span>
+  </div>
+  <div class="dashboard-row">
+    <span>Conduit-related OR delays</span><span>0/month</span><span>≥ 2/month</span><span>___</span>
+  </div>
+  <div class="dashboard-row">
+    <span>Harvester grade distribution reviewed</span><span>Monthly</span><span>Quarterly</span><span>Yes / No</span>
+  </div>
+  <div class="dashboard-row">
+    <span>Preceptor feedback completed</span><span>Per case</span><span>Monthly</span><span>___ / ___</span>
+  </div>
+  <div class="dashboard-row">
+    <span>Stage 1-2 harvester progression on track</span><span>100%</span><span>&lt; 80%</span><span>___%</span>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- PAGE 3: Turnover Protocol + Self-Assessment -->
+<div class="hero" style="padding:22px 28px; margin-bottom:22px;">
+  <p class="eyebrow">Conduit Quality Assurance System &nbsp;—&nbsp; Page 3</p>
+  <h1 style="font-size:26px;">Turnover Survival Protocol<br>&amp; Program Self-Assessment</h1>
+</div>
+
+<!-- Component 4: Turnover Survival Protocol -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>4) Turnover Survival Protocol</h3>
+    <p>What to do when a harvester leaves — before quality deteriorates.</p>
+  </div>
+</div>
+
+<p style="margin-bottom:14px;">Conduit quality is the most vulnerable part of a cardiac surgery program when a harvester leaves. Without a protocol, programs enter reactive mode: remaining harvesters absorb the volume, fatigue increases, and quality erodes silently until a conduit fails. This protocol is designed to be activated the moment a resignation is received — not after the departure.</p>
+
+<div class="card">
+  <h3>Turnover Survival Checklist</h3>
+
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div>
+      <strong style="color:#1B2A4A;">Day 0 — Resignation Received:</strong>
+      <p>Notify Lead APP and CVOR Director. Flag departing harvester's caseload for redistribution review. Pull last 3 months of grade data — identify any quality trends that need immediate attention. Schedule knowledge-transfer sessions for any program-specific techniques or preferences.</p>
+    </div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div>
+      <strong style="color:#1B2A4A;">Week 1 — Transition Planning:</strong>
+      <p>Map all harvests over next 90 days to remaining harvesters. If capacity gap exceeds 20%, activate locum or cross-coverage plan immediately. Do not wait until the person leaves. Notify perfusion and anesthesia of any anticipated schedule adjustments. Schedule departing harvester to co-harvest with their replacement or next-in-line for at least 3 cases.</p>
+    </div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div>
+      <strong style="color:#1B2A4A;">Month 1 Post-Departure — Quality Surveillance:</strong>
+      <p>Increase conduit grading frequency to every case (if not already). Run weekly grade distribution reports — do not wait for month-end. Any Grade C triggers same-day preceptor review. Monitor harvester fatigue: if any remaining harvester exceeds 120% of baseline volume, escalate to CVOR Director.</p>
+    </div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div>
+      <strong style="color:#1B2A4A;">Months 2–3 — Stabilization:</strong>
+      <p>Return to monthly grade audits when quality thresholds are met for 4 consecutive weeks. If new hire onboarding is underway, Stage 1-2 harvesters should not be used to fill volume gaps — this risks both conduit quality and trainee development. Complete post-turnover quality review with CVOR Director, Lead APP, and remaining harvesters.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- Component 5: Program Self-Assessment -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>5) Program Self-Assessment</h3>
+    <p>Score your program across seven dimensions of conduit quality readiness.</p>
+  </div>
+</div>
+
+<p style="margin-bottom:14px;">Rate each dimension 1–5. Be honest — the goal is to identify the gap between where you are and where you need to be.</p>
+
+<div class="card">
+  <h3>Seven Dimensions of Conduit Quality Readiness</h3>
+
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:18px; font-weight:700; color:#1B2A4A; width:24px; text-align:center;">1</div>
+    <div>
+      <strong style="color:#1B2A4A;">Written Grading Standards</strong>
+      <p>Do you have objective, written criteria for grading every harvested conduit — or does assessment depend on who's looking? &nbsp; &nbsp; Score: ___ / 5</p>
+    </div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:18px; font-weight:700; color:#C9973A; width:24px; text-align:center;">2</div>
+    <div>
+      <strong style="color:#1B2A4A;">Harvester Competency Documentation</strong>
+      <p>Is each harvester's competency level formally tracked — with gate criteria, preceptor sign-offs, and progression milestones? &nbsp; &nbsp; Score: ___ / 5</p>
+    </div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:18px; font-weight:700; color:#1B2A4A; width:24px; text-align:center;">3</div>
+    <div>
+      <strong style="color:#1B2A4A;">Monthly Quality Metrics</strong>
+      <p>Are conduit quality metrics reviewed at least monthly at a program quality meeting — or does quality review happen only when something goes wrong? &nbsp; &nbsp; Score: ___ / 5</p>
+    </div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:18px; font-weight:700; color:#C9973A; width:24px; text-align:center;">4</div>
+    <div>
+      <strong style="color:#1B2A4A;">Preceptor Accountability</strong>
+      <p>Are preceptors formally assigned, trained in feedback delivery, and evaluated on precepting outcomes — or is precepting an unfunded mandate? &nbsp; &nbsp; Score: ___ / 5</p>
+    </div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:18px; font-weight:700; color:#1B2A4A; width:24px; text-align:center;">5</div>
+    <div>
+      <strong style="color:#1B2A4A;">Remediation Pathway</strong>
+      <p>When a harvester's quality deteriorates, is there a structured remediation process — or does the program just hope it improves? &nbsp; &nbsp; Score: ___ / 5</p>
+    </div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:18px; font-weight:700; color:#C9973A; width:24px; text-align:center;">6</div>
+    <div>
+      <strong style="color:#1B2A4A;">Turnover Resilience</strong>
+      <p>Is there a documented protocol for maintaining quality during harvester transitions — or does the program enter crisis mode with every departure? &nbsp; &nbsp; Score: ___ / 5</p>
+    </div>
+  </div>
+  <div class="checklist-item">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:18px; font-weight:700; color:#1B2A4A; width:24px; text-align:center;">7</div>
+    <div>
+      <strong style="color:#1B2A4A;">Quality Culture</strong>
+      <p>Does your program culture treat conduit quality as a shared team responsibility — or as an individual harvester problem? Do harvesters feel safe reporting quality concerns? &nbsp; &nbsp; Score: ___ / 5</p>
+    </div>
+  </div>
+
+  <div style="margin-top:18px; padding-top:14px; border-top:1.5px solid #D9D9D9;">
+    <p style="font-weight:700; color:#1B2A4A;">Composite Score: ___ / 35</p>
+    <table style="width:100%; border-collapse:collapse; font-size:10.5px; margin-top:12px;">
+      <tr style="border-bottom:1px solid #E5E7EB;">
+        <td style="padding:6px 8px; font-weight:700; color:#1B2A4A;">28–35</td>
+        <td style="padding:6px 8px; color:#3A3F4A;">Quality-Systematized. Your program has structural conduit quality assurance.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #E5E7EB;">
+        <td style="padding:6px 8px; font-weight:700; color:#C9973A;">21–27</td>
+        <td style="padding:6px 8px; color:#3A3F4A;">Quality-Aware. Good practices exist but they're person-dependent. System gaps remain.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #E5E7EB;">
+        <td style="padding:6px 8px; font-weight:700; color:#C9973A;">14–20</td>
+        <td style="padding:6px 8px; color:#3A3F4A;">Quality-Vulnerable. Conduit quality depends on individual harvesters without system backup.</td>
+      </tr>
+      <tr>
+        <td style="padding:6px 8px; font-weight:700; color:#CC3333;">Below 14</td>
+        <td style="padding:6px 8px; color:#3A3F4A;">Quality-at-Risk. Program has no structured conduit quality assurance. Every harvester departure is a patient safety event waiting to happen.</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<div class="card">
+  <h3>Next Steps: From Assessment to Action</h3>
+  <ol style="padding-left:18px; margin-top:8px;">
+    <li style="margin-bottom:8px;"><strong>Start with the lowest-scoring dimension.</strong> A single systematized dimension reduces more risk than partial improvement across all seven.</li>
+    <li style="margin-bottom:8px;"><strong>Write it down.</strong> If your grading standards exist only in the head of your most experienced harvester, they don't exist. Document first, implement second.</li>
+    <li style="margin-bottom:8px;"><strong>Make quality review routine — not reactive.</strong> Monthly dashboard reviews transform conduit quality from an incident-driven conversation into a managed process.</li>
+    <li><strong>Build before you need it.</strong> The turnover survival protocol must be in place before a resignation arrives. By the time someone gives notice, it's too late to design the response.</li>
+  </ol>
+</div>
+
+<div class="footer">
+  <p style="font-family:'Playfair Display',Georgia,serif; font-size:13px; color:#1B2A4A; font-weight:700;">The MBA PA</p>
+  <p>Pol Vedar, PA-C, MBA &mdash; Cardiothoracic Surgery</p>
+  <p>pol@themba-pa.com &nbsp;|&nbsp; themba-pa.com</p>
+  <p style="margin-top:10px; font-size:9px; color:#9CA3AF;">This is an operational systems framework, not clinical teaching or patient-care directives. It draws on established quality-improvement methodology applied to the cardiac surgery domain.</p>
+  <p style="font-size:9px; color:#9CA3AF;">&copy; 2026 The MBA PA. All rights reserved.</p>
+</div>
+
+</body>
+</html>
