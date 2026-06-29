@@ -53,7 +53,7 @@
   <div class="container">
     <form id="capture-form" class="resource-form" action="https://formspree.io/f/mdapynnq" method="POST">
       <input type="hidden" name="_subject" value="Conduit Quality System — New Download" />
-      <input type="hidden" name="_next" value="?download=ready" />
+      <input type="hidden" name="_next" value="https://themba-pa.com/resources/conduit-quality?download=ready" />
       <label for="name">Name</label>
       <input type="text" id="name" name="name" placeholder="Your full name" required />
 
@@ -102,11 +102,42 @@
   </footer>
 
   <script>
-    // Show download box if returning after form submit
+    const form = document.getElementById('capture-form');
+    const downloadBox = document.getElementById('download-box');
+
+    // Show download box if returning from Formspree redirect (backward compat)
     if (window.location.search.includes('download=ready')) {
-      document.getElementById('download-box').classList.add('visible');
-      document.getElementById('download-box').scrollIntoView({ behavior: 'smooth' });
+      downloadBox.classList.add('visible');
+      downloadBox.scrollIntoView({ behavior: 'smooth' });
     }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          downloadBox.classList.add('visible');
+          downloadBox.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Get the Framework';
+          alert('Something went wrong. Please try again or email pol@themba-pa.com.');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Get the Framework';
+        alert('Something went wrong. Please try again or email pol@themba-pa.com.');
+      }
+    });
   </script>
   <script src="../js/main.js"></script>
 </body>
