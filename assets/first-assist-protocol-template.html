@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Cardiac Surgery First-Assist Protocol Template | The MBA PA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+<style>
+  @page { size: letter; margin: 0.6in 0.7in; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #3A3F4A;
+    font-size: 11px;
+    line-height: 1.65;
+    max-width: 7.1in;
+    margin: 0 auto;
+    padding: 0.5in 0;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #1B2A4A 0%, #243558 100%);
+    border-radius: 8px;
+    padding: 30px 32px;
+    margin-bottom: 28px;
+    page-break-inside: avoid;
+  }
+  .eyebrow {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #C9973A; margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px; color: #FFFFFF; line-height: 1.15; margin-bottom: 10px;
+  }
+  .hero .subtitle {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px; color: #C9973A; margin-bottom: 18px; font-weight: 700;
+  }
+  .hero .byline {
+    font-size: 12px; font-weight: 700; color: #FFFFFF; margin-bottom: 4px;
+  }
+  .hero .byline-sub {
+    font-size: 12px; font-weight: 700; color: #FFFFFF; margin-bottom: 12px;
+  }
+  .hero .desc {
+    font-size: 11px; color: #D8DCE5; line-height: 1.6;
+  }
+
+  .card {
+    background: #F6EFE3; border-radius: 8px; padding: 22px 26px;
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+  }
+  .card h3 {
+    font-size: 15px; font-weight: 700; color: #1B2A4A; margin-bottom: 12px;
+  }
+  .card p, .card li {
+    font-size: 11px; color: #3A3F4A; line-height: 1.65;
+  }
+  .card ul {
+    list-style: none; padding-left: 0;
+  }
+  .card li {
+    padding: 6px 0 6px 16px; position: relative;
+  }
+  .card li::before {
+    content: ''; position: absolute; left: 0; top: 12px;
+    width: 5px; height: 5px; border-radius: 50%; background: #C9973A;
+  }
+  .card li strong { color: #1B2A4A; }
+
+  .divider {
+    border: none; border-top: 1px solid #D9D9D9;
+    margin: 24px 0;
+  }
+
+  .section-header {
+    display: flex; align-items: stretch; gap: 14px;
+    background: linear-gradient(90deg, #F5F3EF 0%, #FFFFFF 100%);
+    border-radius: 8px; padding: 18px 22px; margin-bottom: 16px;
+    page-break-inside: avoid;
+  }
+  .section-header .accent {
+    width: 4px; background: #C9973A;
+    border-radius: 2px; flex-shrink: 0;
+  }
+  .section-header h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px; color: #1B2A4A; margin-bottom: 4px; font-weight: 700;
+  }
+  .section-header p {
+    font-size: 11px; color: #5A5F6A;
+  }
+
+  .table-grid {
+    display: grid; gap: 0; border: 1px solid #D9D9D9; border-radius: 6px; overflow: hidden;
+    margin: 12px 0;
+    page-break-inside: avoid;
+  }
+  .table-grid .th {
+    background: #1B2A4A; color: #FFFFFF; font-size: 10px;
+    font-weight: 700; padding: 8px 12px; text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .table-grid .td {
+    padding: 8px 12px; font-size: 10.5px; color: #3A3F4A;
+    border-top: 1px solid #E5E7EB; background: #FFFFFF;
+    line-height: 1.5;
+  }
+
+  .question-block {
+    background: #FFFFFF; border: 1.5px solid #E5E7EB;
+    border-radius: 8px; padding: 16px 20px; margin: 10px 0;
+    page-break-inside: avoid;
+  }
+  .question-block .q-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 14px; color: #C9973A; font-weight: 700; margin-bottom: 4px;
+  }
+  .question-block .q-text {
+    font-size: 12px; font-weight: 600; color: #1B2A4A; margin-bottom: 6px;
+  }
+  .question-block .q-note {
+    font-size: 10.5px; color: #5A5F6A; line-height: 1.55;
+  }
+
+  .failure-block {
+    display: flex; gap: 12px; padding: 12px 0;
+    border-bottom: 1px solid #E5E7EB; align-items: flex-start;
+    page-break-inside: avoid;
+  }
+  .failure-block:last-child { border-bottom: none; }
+  .failure-num {
+    background: #C9973A; color: #FFFFFF; border-radius: 6px;
+    width: 28px; height: 28px; display: flex; align-items: center;
+    justify-content: center; font-weight: 700; font-size: 13px;
+    flex-shrink: 0;
+  }
+  .failure-content { flex: 1; }
+  .failure-content h4 { font-size: 12px; color: #1B2A4A; margin-bottom: 2px; font-weight: 700; }
+  .failure-content p { font-size: 10.5px; color: #3A3F4A; }
+
+  .checklist-item {
+    display: flex; gap: 10px; padding: 8px 0;
+    border-bottom: 1px solid #E5E7EB; align-items: flex-start;
+    page-break-inside: avoid;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 16px; height: 16px; border: 1.5px solid #9CA3AF;
+    border-radius: 3px; flex-shrink: 0; margin-top: 2px;
+  }
+
+  .two-col {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    page-break-inside: avoid;
+  }
+
+  .footer {
+    text-align: center; padding-top: 24px; margin-top: 24px;
+    border-top: 1.5px solid #D9D9D9;
+  }
+  .footer p {
+    font-size: 10px; color: #9CA3AF; margin-bottom: 2px;
+  }
+
+  @media print {
+    body { padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hero + How to Use + Section 1 -->
+<div class="hero">
+  <p class="eyebrow">Free Resource &nbsp;|&nbsp; The MBA PA</p>
+  <h1>Cardiac Surgery<br>First-Assist Protocol<br>Template</h1>
+  <p class="subtitle">A Practical Readiness Framework for Cardiac Surgery PAs,<br>Surgical Techs, and Surgical Residents</p>
+  <p class="byline">By Pol Martin D. Vedar, PA-C, MBA</p>
+  <p class="byline-sub">The MBA PA</p>
+  <p class="desc">A practical readiness framework for cardiac surgery first assistants — so new APPs earn trust faster and programs scale training beyond any one person. Built from 13+ years of OR experience and refined across multiple cardiac surgery programs.</p>
+</div>
+
+<div class="card">
+  <h3>How to Use This Resource</h3>
+  <ul>
+    <li><strong>For individual clinicians:</strong> Use the five pre-case questions and intraoperative standards as a daily readiness checklist. The debrief template turns every case into a learning event.</li>
+    <li><strong>For preceptors:</strong> Use the common failure points to diagnose where a trainee is stuck — and the competency checklist to document progression objectively.</li>
+    <li><strong>For program leaders:</strong> Use the program-level competency checklist to standardize what "ready" means across your entire APP team — no more tribal knowledge.</li>
+  </ul>
+</div>
+
+<hr class="divider"/>
+
+<!-- Section 1: Pre-Case Protocol -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>1) First-Assist Readiness: Pre-Case Protocol</h3>
+    <p>Before entering the room, the first assistant should be able to answer five questions clearly.</p>
+  </div>
+</div>
+
+<div class="question-block">
+  <div class="q-num">Question 1</div>
+  <div class="q-text">What procedure are we doing — and what's the plan?</div>
+  <div class="q-note">Know the specific operation (CABG x3? AVR with root enlargement? Redo sternotomy?). Understand the surgeon's preferred sequence: cannulation strategy, conduit plan, valve sizing approach. A first assist who knows the plan can anticipate the next move — and that's what builds trust.</div>
+</div>
+
+<div class="question-block">
+  <div class="q-num">Question 2</div>
+  <div class="q-text">What's unique about this patient?</div>
+  <div class="q-note">Review the chart for anatomy variants (redundant colon for conduit? porcelain aorta?), comorbidities that change the game (EF &lt;20%? pulmonary hypertension? prior chest radiation?), and anything that makes this case different from a textbook version. The surgeon should never be surprised by something you could have flagged.</div>
+</div>
+
+<div class="question-block">
+  <div class="q-num">Question 3</div>
+  <div class="q-text">What equipment is needed — and is it in the room?</div>
+  <div class="q-note">Check: sternotomy saw tested? EVH tower positioned and functional? Valve sizers and implant kit confirmed with rep? Cell saver set up? Defibrillator pads placed? Hemostatic agents available? Assume nothing. Verify everything.</div>
+</div>
+
+<div class="question-block">
+  <div class="q-num">Question 4</div>
+  <div class="q-text">What are my specific responsibilities in this case?</div>
+  <div class="q-note">Will you be harvesting conduit? First-assisting the entire case? Managing hemostasis during closure? Know your role before the drapes go up. If you're harvesting and first-assisting, clarify the handoff point with your backup. Unclear roles create OR delays — and delays erode confidence.</div>
+</div>
+
+<div class="question-block">
+  <div class="q-num">Question 5</div>
+  <div class="q-text">What's the most likely complication — and what's my role in managing it?</div>
+  <div class="q-note">For every case type, identify the most common intraoperative emergency: CABG → graft spasm or poor flow; AVR → annular disruption; Redo → cardiac injury on re-entry. Know what you'll do and what you'll hand the surgeon before it happens. Preparation is the difference between panic and performance.</div>
+</div>
+
+<hr class="divider"/>
+
+<!-- Section 2: Intraoperative Standards -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>2) Intraoperative Standards</h3>
+    <p>Four pillars of effective first-assisting — measurable, teachable, and consistent across every case.</p>
+  </div>
+</div>
+
+<div class="table-grid" style="grid-template-columns:1fr 2.5fr 2fr;">
+  <div class="th">Pillar</div><div class="th">Standard</div><div class="th">What "Good" Looks Like</div>
+  <div class="td" style="font-weight:700;">Exposure</div>
+  <div class="td">Provide and maintain optimal visualization of the operative field at all times.</div>
+  <div class="td">Surgeon never asks for adjustment twice. Suction is proactive, not reactive. Field is dry before the surgeon looks up.</div>
+  <div class="td" style="font-weight:700;">Anticipation</div>
+  <div class="td">Know what instrument, suture, or move comes next — before it's requested.</div>
+  <div class="td">Instruments in hand before the surgeon extends a palm. Suture loaded before the last throw is cut. No verbal requests needed for routine steps.</div>
+  <div class="td" style="font-weight:700;">Hemostasis</div>
+  <div class="td">Identify and address bleeding points independently within your scope.</div>
+  <div class="td">Bleeding managed at the assistant level whenever appropriate. Surgeon notified of anything beyond your scope — with a specific description, not a vague "it's bleeding."</div>
+  <div class="td" style="font-weight:700;">Communication</div>
+  <div class="td">Closed-loop communication for every critical step and transition.</div>
+  <div class="td">"Coming off pump" acknowledged. "Protamine in" confirmed. Conduit quality concerns raised immediately — not after the anastomosis is done.</div>
+</div>
+
+<hr class="divider"/>
+
+<!-- Section 3: Common Failure Points -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>3) Five Most Common First-Assist Failure Points</h3>
+    <p>And fast corrections that turn them into growth opportunities.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="failure-block">
+    <div class="failure-num">1</div>
+    <div class="failure-content">
+      <h4>Passive suctioning — waiting for the field to flood before acting</h4>
+      <p><strong>Correction:</strong> Develop a rhythm: suction on every instrument exchange. Keep the field dry as a habit, not a reaction. If the surgeon has to ask for suction, you're already behind.</p>
+    </div>
+  </div>
+  <div class="failure-block">
+    <div class="failure-num">2</div>
+    <div class="failure-content">
+      <h4>Instrument paralysis — freezing when the surgeon asks for something unfamiliar</h4>
+      <p><strong>Correction:</strong> Study the instrument tray before every case. If you don't know a name, learn it after the case. Keep a personal instrument guide. Never say "I don't know what that is" twice for the same instrument.</p>
+    </div>
+  </div>
+  <div class="failure-block">
+    <div class="failure-num">3</div>
+    <div class="failure-content">
+      <h4>Suture management gaps — losing tension, tangling, or loading the wrong suture</h4>
+      <p><strong>Correction:</strong> Maintain gentle tension on every suture — not enough to tear, enough to keep the field organized. Confirm suture type and needle with circulator before loading. Organize suture ends in a consistent pattern.</p>
+    </div>
+  </div>
+  <div class="failure-block">
+    <div class="failure-num">4</div>
+    <div class="failure-content">
+      <h4>Silence during complications — going quiet exactly when communication matters most</h4>
+      <p><strong>Correction:</strong> In a crisis, your voice is a tool. Call out what you see: "Pressure's dropping — looks like the graft." Closed-loop every instruction. Silence in an emergency reads as panic — even when it's just concentration.</p>
+    </div>
+  </div>
+  <div class="failure-block">
+    <div class="failure-num">5</div>
+    <div class="failure-content">
+      <h4>No debrief — finishing the case and moving on without extracting the lesson</h4>
+      <p><strong>Correction:</strong> Use the post-case debrief template (Section 4). One question per case: "What will I do differently next time?" That habit — over 100 cases — is what separates a competent first assist from an exceptional one.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- Section 4: Post-Case Debrief -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>4) Post-Case Debrief Template</h3>
+    <p>Turn every case into deliberate practice. Complete within 24 hours while memory is fresh.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Structured Debrief Prompts</h3>
+
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:18px; font-weight:700; color:#1B2A4A; width:24px; text-align:center;">1</div>
+    <div>
+      <strong style="color:#1B2A4A;">What went well today?</strong>
+      <p style="margin-top:2px;">Be specific. Not "the case went fine." Identify one moment where your preparation or skill made a difference.</p>
+    </div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:18px; font-weight:700; color:#C9973A; width:24px; text-align:center;">2</div>
+    <div>
+      <strong style="color:#1B2A4A;">What would I do differently?</strong>
+      <p style="margin-top:2px;">Identify one specific moment. Was it instrument knowledge? Exposure technique? Communication timing? The more precise, the more actionable.</p>
+    </div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:18px; font-weight:700; color:#1B2A4A; width:24px; text-align:center;">3</div>
+    <div>
+      <strong style="color:#1B2A4A;">What did the surgeon do that I want to incorporate?</strong>
+      <p style="margin-top:2px;">Watch your surgeon's decision-making, not just their hands. When did they change the plan? Why? What judgment call did they make — and what would you have done?</p>
+    </div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:18px; font-weight:700; color:#C9973A; width:24px; text-align:center;">4</div>
+    <div>
+      <strong style="color:#1B2A4A;">Was there a moment I wasn't ready?</strong>
+      <p style="margin-top:2px;">Honesty here is the fastest path to growth. A moment of being unprepared isn't failure — it's data. Log it. Address it before the next similar case.</p>
+    </div>
+  </div>
+  <div class="checklist-item">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:18px; font-weight:700; color:#1B2A4A; width:24px; text-align:center;">5</div>
+    <div>
+      <strong style="color:#1B2A4A;">What's my one focus for the next case?</strong>
+      <p style="margin-top:2px;">Pick one thing. Not three. Deliberate practice means improving one specific skill at a time. Write it down. Review it before the next case.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:16px; padding-top:14px; border-top:1.5px solid #D9D9D9;">
+    <div class="two-col">
+      <div>
+        <p style="font-size:9px; color:#9CA3AF; text-transform:uppercase; letter-spacing:0.08em; font-weight:600; margin-bottom:4px;">Case</p>
+        <p style="font-size:11px; color:#3A3F4A;">Procedure: ___________________</p>
+        <p style="font-size:11px; color:#3A3F4A;">Date: ___________________</p>
+      </div>
+      <div>
+        <p style="font-size:9px; color:#9CA3AF; text-transform:uppercase; letter-spacing:0.08em; font-weight:600; margin-bottom:4px;">Self-Rating</p>
+        <p style="font-size:11px; color:#3A3F4A;">Exposure: &nbsp; 1 &nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; 5</p>
+        <p style="font-size:11px; color:#3A3F4A;">Anticipation: &nbsp; 1 &nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; 5</p>
+        <p style="font-size:11px; color:#3A3F4A;">Communication: &nbsp; 1 &nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; 5</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- Section 5: Competency Checklist -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>5) Program-Level Competency Checklist</h3>
+    <p>Standardize onboarding and training across your entire APP team. Check off each item when the APP demonstrates consistent, independent competence — not just one successful case.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Phase 1: Foundation (First 30 Days)</h3>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div style="font-size:11px; color:#3A3F4A;"><strong style="color:#1B2A4A;">OR orientation complete:</strong> Knows room layout, equipment locations, emergency protocols, and circulator/perfusion team introductions.</div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div style="font-size:11px; color:#3A3F4A;"><strong style="color:#1B2A4A;">Instrument recognition:</strong> Can identify and retrieve every instrument on the cardiac tray by name — without prompting.</div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div style="font-size:11px; color:#3A3F4A;"><strong style="color:#1B2A4A;">Sternal closure:</strong> Independently closes sternum with wire under supervision. Demonstrates appropriate tension and wire spacing.</div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div style="font-size:11px; color:#3A3F4A;"><strong style="color:#1B2A4A;">Chest tube placement:</strong> Independently places and secures chest tubes. Confirms placement with surgeon.</div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Phase 2: First-Assist Integration (Days 31–60)</h3>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div style="font-size:11px; color:#3A3F4A;"><strong style="color:#1B2A4A;">Cannulation assist:</strong> Assists with aortic and venous cannulation — purse-strings, snares, cannula insertion, de-airing. Understands sequence for standard and minimally invasive approaches.</div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div style="font-size:11px; color:#3A3F4A;"><strong style="color:#1B2A4A;">Proximal anastomosis assist:</strong> Provides exposure for proximal vein graft anastomoses. Anticipates partial-occlusion clamp placement and removal.</div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div style="font-size:11px; color:#3A3F4A;"><strong style="color:#1B2A4A;">Valve case assist:</strong> Assists with valve excision, annular debridement, sizing, and implant. Understands differences between mechanical, bioprosthetic, and TAVR cases.</div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div style="font-size:11px; color:#3A3F4A;"><strong style="color:#1B2A4A;">Coming off bypass:</strong> Assists with de-airing, pacing wire placement, and hemodynamic transition. Communicates rhythm, bleeding, and volume status proactively.</div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Phase 3: Independent First-Assist (Days 61–90)</h3>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div style="font-size:11px; color:#3A3F4A;"><strong style="color:#1B2A4A;">Independent CABG first-assist:</strong> Handles entire CABG case as primary first assist — cannulation through closure — without preceptor prompting.</div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div style="font-size:11px; color:#3A3F4A;"><strong style="color:#1B2A4A;">Independent valve first-assist:</strong> Handles AVR and/or MVR as primary first assist across at least 10 cases.</div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div style="font-size:11px; color:#3A3F4A;"><strong style="color:#1B2A4A;">Re-entry / emergency readiness:</strong> Understands redo sternotomy protocol, emergency cannulation sites, and internal cardiac massage access. Can function as second assist in emergency re-entry.</div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div style="font-size:11px; color:#3A3F4A;"><strong style="color:#1B2A4A;">Conduit harvesting competency:</strong> If harvesting is part of role: independently harvests vein and/or radial conduit with ≥90% Grade A or B outcomes.</div>
+  </div>
+</div>
+
+<div style="margin: 20px 0; padding: 18px 22px; border: 2px solid #C9973A; border-radius: 8px; background: #FFFFFF;">
+  <p style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#1B2A4A; margin-bottom:8px;">Sign-Off</p>
+  <p style="font-size:11px; color:#3A3F4A; margin-bottom:14px;">This checklist is complete when all items are checked, dated, and signed by both the trainee and the Lead APP or designated preceptor. Sign-off represents readiness for independent first-assist duties in the specified case types — not the end of learning.</p>
+  <div style="display:flex; gap:40px; margin-top:16px;">
+    <div style="flex:1;"><p style="font-size:10px; color:#9CA3AF; text-transform:uppercase; letter-spacing:0.06em; font-weight:600; margin-bottom:12px;">Trainee</p><p style="font-size:11px; color:#3A3F4A;">Name: ___________________</p><p style="font-size:11px; color:#3A3F4A;">Signature: ___________________</p><p style="font-size:11px; color:#3A3F4A;">Date: ___________________</p></div>
+    <div style="flex:1;"><p style="font-size:10px; color:#9CA3AF; text-transform:uppercase; letter-spacing:0.06em; font-weight:600; margin-bottom:12px;">Lead APP / Preceptor</p><p style="font-size:11px; color:#3A3F4A;">Name: ___________________</p><p style="font-size:11px; color:#3A3F4A;">Signature: ___________________</p><p style="font-size:11px; color:#3A3F4A;">Date: ___________________</p></div>
+  </div>
+</div>
+
+<div class="footer">
+  <p style="font-family:'Playfair Display',Georgia,serif; font-size:13px; color:#1B2A4A; font-weight:700;">The MBA PA</p>
+  <p>Pol Vedar, PA-C, MBA &mdash; Cardiothoracic Surgery</p>
+  <p>pol@themba-pa.com &nbsp;|&nbsp; themba-pa.com</p>
+  <p style="margin-top:10px; font-size:9px; color:#9CA3AF;">This is an operational framework, not clinical teaching or patient-care directives.</p>
+  <p style="font-size:9px; color:#9CA3AF;">&copy; 2026 The MBA PA. All rights reserved.</p>
+</div>
+
+</body>
+</html>
