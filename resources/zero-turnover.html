@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Zero Turnover Framework | The MBA PA</title>
+  <meta name="description" content="Build surgical APP retention infrastructure so your best APPs don't walk out the door. A four-phase retention architecture." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .resource-hero { padding: 6rem 0 3rem; text-align: center; }
+    .resource-hero h1 { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .resource-hero .eyebrow { margin-bottom: 0.5rem; }
+    .resource-hero p { max-width: 600px; margin: 0 auto 2rem; color: var(--text-secondary); }
+    .resource-form { max-width: 480px; margin: 0 auto; padding: 2.5rem; background: var(--surface); border-radius: 12px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+    .resource-form label { display: block; font-weight: 600; margin-bottom: 0.4rem; }
+    .resource-form input { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; margin-bottom: 1rem; font-family: inherit; }
+    .resource-form button { width: 100%; }
+    .resource-benefits { max-width: 600px; margin: 3rem auto 0; padding: 0 1rem; }
+    .resource-benefits h3 { margin-bottom: 1rem; }
+    .resource-benefits ul { list-style: none; padding: 0; }
+    .resource-benefits li { padding: 0.5rem 0 0.5rem 1.75rem; position: relative; }
+    .resource-benefits li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .disclaimer { max-width: 600px; margin: 2rem auto 0; padding: 1rem; font-size: 0.85rem; color: var(--text-secondary); text-align: center; }
+    .download-section { display: none; max-width: 480px; margin: 2rem auto; padding: 2.5rem; background: var(--accent-light); border-radius: 12px; text-align: center; }
+    .download-section.visible { display: block; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="logo">The MBA PA</a>
+      <ul class="nav-links">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#consulting">Consulting</a></li>
+        <li><a href="/#courses">Courses</a></li>
+        <li><a href="/#resources">Resources</a></li>
+        <li><a href="/#contact" class="btn btn-sm">Work With Me</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="resource-hero">
+    <div class="container">
+      <p class="eyebrow">Free Resource</p>
+      <h1>The Zero Turnover Framework</h1>
+      <p>The four-phase retention architecture that catches every APP at the inflection point they're most likely to leave — and gives them a reason to stay.</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <form id="capture-form" class="resource-form" action="https://formspree.io/f/mdapynnq" method="POST">
+      <input type="hidden" name="_subject" value="Zero Turnover Framework — New Download" />
+      <input type="hidden" name="_next" value="https://themba-pa.com/resources/zero-turnover?download=ready" />
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+      <label for="email">Work Email</label>
+      <input type="email" id="email" name="email" placeholder="you@hospital.org" required />
+
+      <label for="role">Role</label>
+      <input type="text" id="role" name="role" placeholder="e.g. Lead APP, Program Director, CVOR Manager" />
+
+      <button type="submit" class="btn btn-primary">Get the Framework</button>
+      <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.75rem;">No spam. Your info stays private.</p>
+    </form>
+
+    <div id="download-box" class="download-section">
+      <h3 style="margin-bottom:0.75rem;">Your framework is ready</h3>
+      <p style="margin-bottom:1.25rem;">Download the Zero Turnover Framework and build the retention infrastructure that keeps your best APPs from walking out the door.</p>
+      <a href="../assets/the-zero-turnover-framework.pdf" class="btn btn-primary" download>Download Now</a>
+      <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:1rem;">Also sent to your email. Check spam if you don't see it.</p>
+    </div>
+
+    <div class="resource-benefits">
+      <h3>What's Inside</h3>
+      <ul>
+        <li>The four predictable inflection points where APPs decide to stay or leave</li>
+        <li>First-90-Day development pathway with weekly checkpoint templates</li>
+        <li>Independent status graduation protocol with recognition gate</li>
+        <li>Four-track career pathway (Clinical, Teaching, Leadership, Quality)</li>
+        <li>Quarterly retention checkpoint system with flight risk protocol</li>
+        <li>APP turnover cost calculator — build the business case for retention</li>
+        <li>Program self-assessment — score your retention infrastructure in 7 dimensions</li>
+      </ul>
+    </div>
+
+    <p class="disclaimer">This is an operational systems framework, not clinical teaching or patient-care directives. Turnover cost ranges ($90K-$205K) are illustrative composites based on published healthcare turnover cost literature and APP-specific benchmarks.</p>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-logo">The MBA PA</p>
+      <p class="footer-sub">Pol Vedar, PA-C, MBA — Cardiothoracic Surgery</p>
+      <div class="footer-links">
+        <a href="https://linkedin.com/in/polvedar/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://linktr.ee/themba.pa" target="_blank" rel="noopener">Linktree</a>
+        <a href="mailto:pol@themba-pa.com">Email</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 The MBA PA. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('capture-form');
+    const downloadBox = document.getElementById('download-box');
+
+    if (window.location.search.includes('download=ready')) {
+      downloadBox.classList.add('visible');
+      downloadBox.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          downloadBox.classList.add('visible');
+          downloadBox.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Get the Framework';
+          alert('Something went wrong. Please try again or email pol@themba-pa.com.');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Get the Framework';
+        alert('Something went wrong. Please try again or email pol@themba-pa.com.');
+      }
+    });
+  </script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Preceptor Accountability System | The MBA PA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+<style>
+  @page { size: letter; margin: 0.6in 0.7in; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #3A3F4A;
+    font-size: 10.5px;
+    line-height: 1.6;
+    max-width: 7.1in;
+    margin: 0 auto;
+    padding: 0.5in 0;
+  }
+  .hero {
+    background: linear-gradient(135deg, #1B2A4A 0%, #243558 100%);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    page-break-inside: avoid;
+  }
+  .eyebrow {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #C9973A; margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px; color: #FFFFFF; line-height: 1.15; margin-bottom: 10px;
+  }
+  .hero .subtitle {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 14px; color: #C9973A; margin-bottom: 16px; font-weight: 700;
+  }
+  .hero .byline { font-size: 11px; font-weight: 700; color: #FFFFFF; margin-bottom: 3px; }
+  .hero .byline-sub { font-size: 11px; font-weight: 700; color: #FFFFFF; margin-bottom: 10px; }
+  .hero .desc { font-size: 10.5px; color: #D8DCE5; line-height: 1.6; }
+
+  .card {
+    background: #F6EFE3; border-radius: 8px; padding: 18px 22px;
+    margin-bottom: 18px;
+    page-break-inside: avoid;
+  }
+  .card h3 { font-size: 14px; font-weight: 700; color: #1B2A4A; margin-bottom: 8px; }
+  .card p, .card li { font-size: 10px; color: #3A3F4A; line-height: 1.55; }
+  .card ul { list-style: none; padding-left: 0; }
+  .card li { padding: 4px 0 4px 14px; position: relative; }
+  .card li::before { content: ''; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: #C9973A; }
+  .card li strong { color: #1B2A4A; }
+
+  .divider { border: none; border-top: 1px solid #D9D9D9; margin: 18px 0; }
+
+  .section-header {
+    display: flex; align-items: stretch; gap: 12px;
+    background: linear-gradient(90deg, #F5F3EF 0%, #FFFFFF 100%);
+    border-radius: 8px; padding: 14px 18px; margin-bottom: 12px;
+    page-break-inside: avoid;
+  }
+  .section-header .accent { width: 4px; background: #C9973A; border-radius: 2px; flex-shrink: 0; }
+  .section-header h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 17px; color: #1B2A4A; margin-bottom: 3px; font-weight: 700; }
+  .section-header p { font-size: 10px; color: #5A5F6A; }
+
+  .table-grid {
+    display: grid; gap: 0; border: 1px solid #D9D9D9; border-radius: 6px; overflow: hidden;
+    margin: 8px 0;
+    page-break-inside: avoid;
+  }
+  .table-grid .th {
+    background: #1B2A4A; color: #FFFFFF; font-size: 9px;
+    font-weight: 700; padding: 6px 8px; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .table-grid .td {
+    padding: 6px 8px; font-size: 9.5px; color: #3A3F4A;
+    border-top: 1px solid #E5E7EB; background: #FFFFFF; line-height: 1.5;
+  }
+
+  .ladder-step {
+    display: flex; gap: 10px; padding: 10px 0;
+    border-bottom: 1px solid #E5E7EB; align-items: flex-start;
+    page-break-inside: avoid;
+  }
+  .ladder-step:last-child { border-bottom: none; }
+  .ladder-level {
+    background: #1B2A4A; color: #FFFFFF; border-radius: 6px;
+    width: 36px; height: 36px; display: flex; align-items: center;
+    justify-content: center; font-family: 'Playfair Display', Georgia, serif;
+    font-size: 18px; font-weight: 700; flex-shrink: 0;
+  }
+  .ladder-level.gold { background: #C9973A; }
+  .ladder-content { flex: 1; }
+  .ladder-content h4 { font-size: 11px; color: #1B2A4A; margin-bottom: 2px; font-weight: 700; }
+  .ladder-content p { font-size: 9.5px; color: #3A3F4A; }
+
+  .dashboard-row {
+    display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr;
+    padding: 6px 0; border-bottom: 1px solid #E5E7EB;
+    font-size: 9.5px;
+    page-break-inside: avoid;
+  }
+  .dashboard-row.header { font-weight: 700; color: #1B2A4A; font-size: 9px; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #1B2A4A; }
+  .dashboard-row:last-child { border-bottom: none; }
+
+  .checklist-item {
+    display: flex; gap: 6px; padding: 5px 0;
+    border-bottom: 1px solid #E5E7EB; align-items: flex-start;
+    page-break-inside: avoid;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .check-box { width: 12px; height: 12px; border: 1.5px solid #9CA3AF; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+
+  .footer {
+    text-align: center; padding-top: 18px; margin-top: 18px;
+    border-top: 1.5px solid #D9D9D9;
+  }
+  .footer p { font-size: 10px; color: #9CA3AF; margin-bottom: 2px; }
+
+  .page-break { page-break-before: always; }
+
+  @media print { body { padding: 0; } .page-break { page-break-before: always; } }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hero + Unfunded Mandate + Preceptor Competency Model -->
+<div class="hero">
+  <p class="eyebrow">Free Resource &nbsp;|&nbsp; The MBA PA</p>
+  <h1>Preceptor<br>Accountability System</h1>
+  <p class="subtitle">Building a Surgical APP Teaching Infrastructure That Actually Produces Competent, Autonomous Providers</p>
+  <p class="byline">By Pol Martin D. Vedar, PA-C, MBA</p>
+  <p class="byline-sub">The MBA PA</p>
+  <p class="desc">A framework for cardiac surgery programs to replace "assigned preceptor" with accountable surgical educator — defining what good preceptorship looks like, measuring it systematically, and creating the feedback loops that turn brilliant surgeons into effective teachers.</p>
+</div>
+
+<div class="card">
+  <h3>Why "Assign a Preceptor" Fails — The Unfunded Mandate Problem</h3>
+  <p style="margin-bottom:8px;">Preceptorship is the only critical organizational function that most surgical programs assign without training, measure without metrics, and reward without recognition.</p>
+  <div class="table-grid" style="grid-template-columns:1fr 1fr;">
+    <div class="th">The Default Approach</div>
+    <div class="th">What It Produces</div>
+    <div class="td">Surgeon assigned as preceptor with no training</div>
+    <div class="td">Surgeon teaches the way they were taught — 15 years ago, different training model, zero pedagogical framework</div>
+    <div class="td">No defined preceptor responsibilities beyond "teach the APP"</div>
+    <div class="td">Surgeon interprets "teach" as "let them watch." APP spends 40 cases observing before ever touching an instrument.</div>
+    <div class="td">No evaluation of preceptor effectiveness</div>
+    <div class="td">The brilliant surgeon who can't teach is considered "a great preceptor" because nobody measured outcomes.</div>
+    <div class="td">No feedback loop from APP to preceptor</div>
+    <div class="td">APP has no safe way to say "I need more structured feedback." Gaps fester silently.</div>
+    <div class="td">Preceptorship as add-on to clinical duties</div>
+    <div class="td">Preceptor prioritizes cases, RVUs, patient care — teaching is leftover minutes. APP development permanently deprioritized.</div>
+    <div class="td">No consequences for poor preceptorship</div>
+    <div class="td">Surgeon whose APPs take 2x longer to reach autonomy faces same consequences as the surgeon whose APPs accelerate: none.</div>
+    <div class="td">No recognition for excellent preceptorship</div>
+    <div class="td">The surgeon who develops 5 autonomous APPs in 2 years gets the same annual review as the surgeon who develops zero.</div>
+  </div>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>1) The Preceptor Competency Model — Define What "Good" Looks Like</h3>
+    <p>Before you can hold preceptors accountable, you have to define what good preceptorship means.</p>
+  </div>
+</div>
+
+<div class="table-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+  <div class="th">Competency</div><div class="th">Definition</div><div class="th">Observable Behaviors</div><div class="th">Measurement</div>
+  <div class="td"><strong>1. Structured Demonstration</strong></div>
+  <div class="td">Breaks down procedures into sequential, teachable steps with verbal narration</div>
+  <div class="td">"First I'll expose the vein. Watch how I identify the branches before ligating. Now you'll see me create the tunnel…"</div>
+  <div class="td">APP assessment: "Preceptor narrates steps" (1-5)</div>
+  <div class="td"><strong>2. Progressive Autonomy</strong></div>
+  <div class="td">Gradually increases APP responsibility based on demonstrated performance, not calendar time</div>
+  <div class="td">"You've managed the vein harvest independently for 4 cases. Today I want you to do the sternotomy closure start to finish."</div>
+  <div class="td">Case log: Autonomy advancement rate vs. program benchmarks</div>
+  <div class="td"><strong>3. Specific, Actionable Feedback</strong></div>
+  <div class="td">Names the behavior, the impact, and the correction — not vague judgments</div>
+  <div class="td">"Your cannulation angle was ~45° — that's why the wire met resistance. Drop to 20-25° next time." NOT: "Your cannulation needs work."</div>
+  <div class="td">APP assessment: "Feedback is specific and actionable" (1-5)</div>
+  <div class="td"><strong>4. Structured Debriefing</strong></div>
+  <div class="td">Conducts post-case review within 24 hours: what went well, what could improve, focus for next case</div>
+  <div class="td">"Three things: (1) Conduit prep was clean. (2) Hesitating on proximal suture placement — focused reps next case. (3) Good SA on aortic calcification."</div>
+  <div class="td">APP assessment + evaluation completion rate (% of cases)</div>
+  <div class="td"><strong>5. Safe Learning Environment</strong></div>
+  <div class="td">Creates conditions where APP can ask questions, admit uncertainty, and report errors without fear</div>
+  <div class="td">APP: "I told my preceptor I wasn't sure about conduit quality and they examined it with me — didn't dismiss my concern."</div>
+  <div class="td">APP assessment: "I can admit uncertainty without negative consequences" (1-5)</div>
+</div>
+
+<!-- PAGE 2: Preceptor Levels + Training -->
+<div class="hero" style="padding:18px 24px; margin-bottom:18px;">
+  <p class="eyebrow">Preceptor Accountability System &nbsp;—&nbsp; Page 2</p>
+  <h1 style="font-size:22px;">Preceptor Proficiency Levels<br>&amp; Training Curriculum</h1>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>2) Preceptor Proficiency Levels (P1–P4)</h3>
+    <p>Like APP autonomy levels, preceptors advance through defined stages with clear criteria.</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="ladder-step">
+    <div class="ladder-level">P1</div>
+    <div class="ladder-content">
+      <h4>Provisional Preceptor</h4>
+      <p>Assigned to teach; no formal training completed. Default status for most new preceptors. <strong>Teaching load:</strong> Supervised only — paired with P3+ preceptor for first 3 months. <strong>Recognition:</strong> None.</p>
+    </div>
+  </div>
+  <div class="ladder-step">
+    <div class="ladder-level gold">P2</div>
+    <div class="ladder-content">
+      <h4>Trained Preceptor</h4>
+      <p>Completed preceptor training program; demonstrated understanding of five competencies. <strong>Teaching load:</strong> Can precept independently with quarterly APP evaluations. <strong>Recognition:</strong> Preceptor training certificate.</p>
+    </div>
+  </div>
+  <div class="ladder-step">
+    <div class="ladder-level">P3</div>
+    <div class="ladder-content">
+      <h4>Certified Surgical Educator</h4>
+      <p>2+ APPs advanced to independent status; APP evaluations average ≥4.0/5 across all competencies. <strong>Teaching load:</strong> Can precept 2 APPs simultaneously. <strong>Recognition:</strong> Annual recognition; teaching portfolio reviewed for promotion/compensation.</p>
+    </div>
+  </div>
+  <div class="ladder-step">
+    <div class="ladder-level gold">P4</div>
+    <div class="ladder-content">
+      <h4>Master Surgical Educator</h4>
+      <p>5+ APPs advanced to independent status; APP evaluations average ≥4.5/5; at least 1 APP advanced to full autonomy. <strong>Teaching load:</strong> May precept 2+ APPs; mentors P1-P2 preceptors; contributes to preceptor training curriculum. <strong>Recognition:</strong> Named recognition; leadership consideration; compensation impact.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>3) Preceptor Training Curriculum (8-Hour Modular Program)</h3>
+    <p>Don't hand someone the keys without teaching them to drive.</p>
+  </div>
+</div>
+
+<div class="table-grid" style="grid-template-columns:1fr 0.6fr 1fr 0.9fr;">
+  <div class="th">Module</div><div class="th">Duration</div><div class="th">Content</div><div class="th">Output</div>
+  <div class="td"><strong>1. The Science of Skill Acquisition</strong></div><div class="td">90 min</div>
+  <div class="td">How surgical skills develop: cognitive → associative → autonomous stages. Why "see one, do one, teach one" is inadequate. Role of deliberate practice and error-based learning.</div>
+  <div class="td">Preceptor identifies which stage their current APPs are in for core procedures</div>
+  <div class="td"><strong>2. Structured Demonstration &amp; Task Decomposition</strong></div><div class="td">90 min</div>
+  <div class="td">How to break down a procedure into teachable components. Verbal narration techniques. The "I do, we do, you do" graduated responsibility model.</div>
+  <div class="td">Task-decomposition map for top 3 most-taught procedures</div>
+  <div class="td"><strong>3. Feedback That Changes Behavior</strong></div><div class="td">90 min</div>
+  <div class="td">Difference between evaluation ("that was good") and feedback ("suture spacing inconsistent — aim for 3mm"). Timing: immediate for technical, delayed for judgment. Managing defensive responses.</div>
+  <div class="td">Practice giving feedback on 3 recorded case scenarios; peer evaluation</div>
+  <div class="td"><strong>4. Structured Debriefing &amp; Case Conference</strong></div><div class="td">60 min</div>
+  <div class="td">Post-case debrief framework: what happened → what it means → what to do next. Running a 5-min substantive debrief. Recognizing APP distress or performance plateaus.</div>
+  <div class="td">Templates for 5-min and 15-min debrief formats</div>
+  <div class="td"><strong>5. Progressive Autonomy &amp; Trust Calibration</strong></div><div class="td">90 min</div>
+  <div class="td">Assessing APP readiness. Avoiding too fast (overwhelmed, safety risk) and too slow (bored, stalled). The "challenge point" framework. Using case complexity to calibrate autonomy.</div>
+  <div class="td">Autonomy advancement criteria for 3 procedures</div>
+  <div class="td"><strong>6. APP Evaluation &amp; Documentation</strong></div><div class="td">60 min</div>
+  <div class="td">Competency evaluations that are honest, specific, useful. Avoiding grade inflation and the "nice preceptor" trap — failing to document gaps because it feels uncomfortable.</div>
+  <div class="td">Mock evaluation that passes peer audit</div>
+</div>
+
+<div class="card" style="margin-top:14px;">
+  <h3>Training Schedule</h3>
+  <p><strong>Week 1:</strong> Modules 1-2 (3 hrs) • <strong>Week 2:</strong> Modules 3-4 (2.5 hrs) • <strong>Week 3:</strong> Modules 5-6 (2.5 hrs) • <strong>Week 4:</strong> Observed preceptorship with real-time coaching • <strong>Week 6:</strong> First APP evaluation audited for quality • <strong>Month 3:</strong> Self-assessment and advancement to P2 (if criteria met)</p>
+  <p style="margin-top:8px; font-style:italic; color:#5A5F6A;">An 8-hour investment in preceptor training pays back in reduced APP development time, fewer safety events, higher APP retention, and better surgeon-APP trust — every single APP cycle.</p>
+</div>
+
+<!-- PAGE 3: Measurement + Accountability Loop -->
+<div class="hero" style="padding:18px 24px; margin-bottom:18px;">
+  <p class="eyebrow">Preceptor Accountability System &nbsp;—&nbsp; Page 3</p>
+  <h1 style="font-size:22px;">Preceptor Measurement<br>&amp; Accountability Loop</h1>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>4) APP Evaluation of Preceptor (Quarterly, Anonymous)</h3>
+    <p>Rate each preceptor 1-5: Never / Rarely / Sometimes / Usually / Always.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Evaluation Items</h3>
+  <div class="checklist-item"><div class="check-box"></div><div>Preceptor narrates steps during demonstrations</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>Preceptor gives specific, actionable feedback (not just "good job" or "try again")</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>Preceptor conducts a post-case debrief within 24 hours</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>Preceptor gradually increases my responsibility based on my demonstrated performance</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>I feel safe admitting uncertainty or asking questions to this preceptor</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>Preceptor's expectations of me are clear and consistent</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>I know what I need to demonstrate to advance to the next autonomy level</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>Preceptor completes my competency evaluations honestly and on time</div></div>
+  <p style="margin-top:8px; font-weight:700; color:#1B2A4A;">Composite Score: Average across all items. Target ≥4.0.</p>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>5) Preceptor Outcome Metrics (Per Quarter)</h3>
+  </div>
+</div>
+
+<div class="table-grid" style="grid-template-columns:1fr 1fr 0.8fr 0.8fr 0.8fr;">
+  <div class="th">Metric</div><div class="th">Definition</div><div class="th">Green</div><div class="th">Yellow</div><div class="th">Red</div>
+  <div class="td"><strong>APP Advancement Rate</strong></div><div class="td">% of APPs advancing to next gate within program-benchmark timeframe</div><div class="td">≥80%</div><div class="td">60-79%</div><div class="td">&lt;60%</div>
+  <div class="td"><strong>Time to Independent Assist</strong></div><div class="td">Median weeks for this preceptor's APPs to reach independent assist gate</div><div class="td">≤Program avg</div><div class="td">Avg + 1-4 wks</div><div class="td">&gt;Avg + 4 wks</div>
+  <div class="td"><strong>APP Evaluation Composite</strong></div><div class="td">Average score on 8-item APP evaluation of preceptor</div><div class="td">≥4.0</div><div class="td">3.0-3.9</div><div class="td">&lt;3.0</div>
+  <div class="td"><strong>Evaluation Completion Rate</strong></div><div class="td">% of required competency evaluations completed on time</div><div class="td">≥90%</div><div class="td">75-89%</div><div class="td">&lt;75%</div>
+  <div class="td"><strong>APP Retention Under Preceptor</strong></div><div class="td">% of APPs assigned to this preceptor remaining in program at 6 months</div><div class="td">≥90%</div><div class="td">75-89%</div><div class="td">&lt;75%</div>
+  <div class="td"><strong>Safety Event Rate</strong></div><div class="td">Safety events per 100 precepted cases</div><div class="td">≤Program avg</div><div class="td">Avg + 1-2</div><div class="td">&gt;Avg + 2</div>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>6) Preceptor Accountability Loop — From Measurement to Action</h3>
+    <p>Data without action is just data.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Quarterly Preceptor Review (30 min per preceptor)</h3>
+  <p style="margin-bottom:6px;"><strong style="color:#1B2A4A;">For P3-P4 (high performers):</strong> Dashboard review → recognition (letter to dept chair, teaching portfolio updated, compensation/promotion consideration) → development conversation (mentoring? curriculum? research?) → retention signal.</p>
+  <p style="margin-bottom:6px;"><strong style="color:#1B2A4A;">For P2 (meeting expectations):</strong> Dashboard review → identify one metric to move from green to excellent → targeted development → positive reinforcement.</p>
+  <p style="margin-bottom:6px;"><strong style="color:#1B2A4A;">For P1 (developing):</strong> Dashboard review → root cause analysis (training gap? priority? engagement?) → structured improvement plan with timeline → coaching assignment (P3+ mentor).</p>
+  <p><strong style="color:#CC3333;">Red zone (underperforming):</strong> Dashboard review with specific data → structured conversation → 90-day improvement plan with monthly check-ins → consequences clarity: "If gap persists, we'll discuss whether preceptor role is the right fit."</p>
+</div>
+
+<div class="card">
+  <h3>When a Preceptor Should Step Back — The Reassignment Protocol</h3>
+  <p style="margin-bottom:8px;">Some brilliant surgeons are not effective teachers. This doesn't make them less valuable — it makes them misassigned. The system should normalize preceptor reassignment as a professional decision, not a punishment.</p>
+  <p style="margin-bottom:4px;"><strong>Criteria for reassignment discussion:</strong></p>
+  <div class="checklist-item"><div class="check-box"></div><div>APP evaluation composite &lt;3.0 for two consecutive quarters despite documented improvement support</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>APP advancement rate &lt;50% for two consecutive quarters</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>Documented improvement plan with coaching support was provided and did not close the gap</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>Preceptor self-identifies that teaching is not their strength</div></div>
+  <p style="margin-top:8px; font-style:italic; color:#5A5F6A;">Making it safe for a surgeon to step back prevents the silent preceptor — the one who doesn't want to teach, won't admit it, and produces APPs who stall without anyone understanding why.</p>
+</div>
+
+<!-- PAGE 4: Incentive Structure + Self-Assessment + CTA -->
+<div class="hero" style="padding:18px 24px; margin-bottom:18px;">
+  <p class="eyebrow">Preceptor Accountability System &nbsp;—&nbsp; Page 4</p>
+  <h1 style="font-size:22px;">Preceptor Incentive Structure<br>&amp; Program Self-Assessment</h1>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>7) Preceptor Incentive Structure — Make Teaching Count</h3>
+    <p>Preceptorship will always be an unfunded mandate until it's funded — with money, recognition, and career advancement.</p>
+  </div>
+</div>
+
+<div class="table-grid" style="grid-template-columns:1fr 1fr 1.2fr;">
+  <div class="th">Mechanism</div><div class="th">How It Works</div><div class="th">Example</div>
+  <div class="td"><strong>Teaching RVU Equivalent</strong></div><div class="td">Preceptor receives compensation credit for documented teaching activities</div><div class="td">0.25 teaching RVU per precepted case; 1.0 RVU per completed evaluation; 2.0 RVUs/quarter for P3+</div>
+  <div class="td"><strong>Preceptor Stipend</strong></div><div class="td">Annual or quarterly stipend for active preceptors at P2+</div><div class="td">P2: $2,500/yr; P3: $5,000/yr; P4: $10,000/yr</div>
+  <div class="td"><strong>Teaching Portfolio for Promotion</strong></div><div class="td">Preceptor metrics, APP outcomes, and evaluations documented for academic promotion packets</div><div class="td">"Dr. Chen: 6 APPs to independent status; eval composite 4.6/5; 3 surgical education abstracts"</div>
+  <div class="td"><strong>Conference Support</strong></div><div class="td">P3-P4 preceptors receive departmental support for surgical education conferences</div><div class="td">"Preceptor outcomes accepted at STS — dept covers registration and travel"</div>
+  <div class="td"><strong>Leadership Pathway</strong></div><div class="td">Preceptor advancement creates eligibility for leadership roles</div><div class="td">"APP Program Director requires P3+ status and track record of developing preceptors"</div>
+</div>
+
+<div class="card">
+  <h3>Recognition That Costs Nothing (But Matters)</h3>
+  <ul>
+    <li><strong>Preceptor of the Quarter:</strong> Named recognition at departmental meeting, based on APP evaluation composite and advancement rate</li>
+    <li><strong>Preceptor Board:</strong> Photo + name + metrics in the APP workspace or OR lounge</li>
+    <li><strong>Graduation Attribution:</strong> When an APP advances, the announcement names the preceptor(s) who developed them</li>
+    <li><strong>Annual Teaching Report:</strong> "In 2026, you completed 187 precepted cases, advanced 3 APPs, maintained a 4.6/5 evaluation composite…"</li>
+  </ul>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>8) Self-Assessment — Preceptor System or Preceptor Lottery?</h3>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Seven Dimensions of Preceptor Infrastructure</h3>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:15px; font-weight:700; color:#1B2A4A; width:20px; text-align:center;">1</div>
+    <div><strong style="color:#1B2A4A;">Preceptors receive formal training before being assigned an APP</strong>
+    <p>0 pts — No training. 1 pt — Informal orientation. 2 pts — Structured 8+ hour curriculum with competency assessment. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:15px; font-weight:700; color:#C9973A; width:20px; text-align:center;">2</div>
+    <div><strong style="color:#1B2A4A;">Good preceptorship is defined with specific competencies and behaviors</strong>
+    <p>0 pts — "Good teacher." 1 pt — General expectations. 2 pts — Written competency model with observable behaviors and proficiency levels. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:15px; font-weight:700; color:#1B2A4A; width:20px; text-align:center;">3</div>
+    <div><strong style="color:#1B2A4A;">Preceptor effectiveness is systematically measured</strong>
+    <p>0 pts — Impressions only. 1 pt — Informal feedback. 2 pts — Quarterly anonymous APP evaluations with composite scoring + preceptor outcome metrics. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:15px; font-weight:700; color:#C9973A; width:20px; text-align:center;">4</div>
+    <div><strong style="color:#1B2A4A;">Preceptor performance data is reviewed with each preceptor</strong>
+    <p>0 pts — Never reviewed. 1 pt — Discussed when problems arise. 2 pts — Quarterly structured review with dashboard, recognition, improvement plans. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:15px; font-weight:700; color:#1B2A4A; width:20px; text-align:center;">5</div>
+    <div><strong style="color:#1B2A4A;">Defined pathway for preceptors to step back from teaching</strong>
+    <p>0 pts — Must teach indefinitely or resign. 1 pt — Uncomfortable conversation only when very bad. 2 pts — Documented reassignment protocol that normalizes strategic realignment. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:15px; font-weight:700; color:#C9973A; width:20px; text-align:center;">6</div>
+    <div><strong style="color:#1B2A4A;">Preceptorship linked to compensation, recognition, or career advancement</strong>
+    <p>0 pts — No link. 1 pt — Occasional acknowledgment. 2 pts — Teaching RVUs, stipends, portfolio for promotion, named recognition program. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:15px; font-weight:700; color:#1B2A4A; width:20px; text-align:center;">7</div>
+    <div><strong style="color:#1B2A4A;">APP outcomes analyzed by preceptor to identify variance</strong>
+    <p>0 pts — Not analyzed. 1 pt — APPs evaluated but preceptor impact not isolated. 2 pts — Per-preceptor outcome metrics tracked and compared quarterly. &nbsp; Score: ___ / 2</p></div>
+  </div>
+
+  <div style="margin-top:12px; padding-top:10px; border-top:1.5px solid #D9D9D9;">
+    <p style="font-weight:700; color:#1B2A4A;">Composite Score: ___ / 14</p>
+    <table style="width:100%; border-collapse:collapse; font-size:9.5px; margin-top:8px;">
+      <tr style="border-bottom:1px solid #E5E7EB;">
+        <td style="padding:4px 6px; font-weight:700; color:#1B2A4A;">10–14</td>
+        <td style="padding:4px 6px; color:#3A3F4A;"><strong>Preceptor System.</strong> Your program knows who teaches well and who doesn't. Preceptors trained before they teach. Teaching measured, reviewed, recognized, compensated. APP outcomes consistent across preceptors.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #E5E7EB;">
+        <td style="padding:4px 6px; font-weight:700; color:#C9973A;">5–9</td>
+        <td style="padding:4px 6px; color:#3A3F4A;"><strong>Developing Awareness.</strong> You know preceptorship matters. You've noticed variance. But no training program, measurement system, or accountability loop. You're aware the lottery exists — you just haven't replaced it yet.</td>
+      </tr>
+      <tr>
+        <td style="padding:4px 6px; font-weight:700; color:#CC3333;">0–4</td>
+        <td style="padding:4px 6px; color:#3A3F4A;"><strong>Preceptor Lottery.</strong> APP outcomes determined by which surgeon they're assigned to. No way of knowing who's effective. Some APPs thrive; some stall. That's not a program — that's a hope.</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <h3>What's Inside the Full Preceptor Accountability System Toolkit</h3>
+  <ul>
+    <li><strong>Preceptor competency model template</strong> — five-competency framework with observable behaviors and P1-P4 proficiency levels</li>
+    <li><strong>Preceptor training curriculum</strong> — six-module facilitator guide with slides, case scenarios, practice exercises, and competency assessments</li>
+    <li><strong>APP evaluation of preceptor instrument</strong> — validated 8-item anonymous survey with scoring guide, benchmarking, quarterly deployment calendar</li>
+    <li><strong>Preceptor outcome metrics dashboard</strong> — pre-built with formulas, green/yellow/red thresholds, per-preceptor tracking, peer comparison views</li>
+    <li><strong>Quarterly preceptor review protocol</strong> — structured conversation guides for all performance tiers with documentation templates</li>
+    <li><strong>Preceptor reassignment protocol</strong> — step-by-step guide including criteria triggers, talking points, and transition planning</li>
+    <li><strong>Preceptor incentive structure builder</strong> — compensation models, recognition program templates, annual teaching report format</li>
+    <li><strong>Preceptor onboarding checklist</strong> — 90-day integration plan with training schedule, observation assignments, evaluation milestones</li>
+  </ul>
+  <p style="margin-top:10px; font-weight:700; color:#1B2A4A;">Book a free discovery call → <span style="color:#C9973A;">themba-pa.com/discovery-call</span></p>
+</div>
+
+<div class="footer">
+  <p style="font-family:'Playfair Display',Georgia,serif; font-size:12px; color:#1B2A4A; font-weight:700;">The MBA PA</p>
+  <p>Pol Vedar, PA-C, MBA — Cardiothoracic Surgery</p>
+  <p>pol@themba-pa.com &nbsp;|&nbsp; themba-pa.com</p>
+  <p style="margin-top:8px; font-size:9px; color:#9CA3AF;">This is an operational systems and workforce development framework, not clinical teaching or patient-care directives. It draws on established medical education principles, organizational accountability systems, and preceptor development literature in surgical training.</p>
+  <p style="font-size:9px; color:#9CA3AF;">&copy; 2026 The MBA PA. All rights reserved.</p>
+</div>
+
+</body>
+</html>

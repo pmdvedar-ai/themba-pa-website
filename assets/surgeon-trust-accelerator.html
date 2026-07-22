@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Surgeon Trust Accelerator | The MBA PA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+<style>
+  @page { size: letter; margin: 0.6in 0.7in; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #3A3F4A;
+    font-size: 10.5px;
+    line-height: 1.6;
+    max-width: 7.1in;
+    margin: 0 auto;
+    padding: 0.5in 0;
+  }
+  .hero {
+    background: linear-gradient(135deg, #1B2A4A 0%, #243558 100%);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    page-break-inside: avoid;
+  }
+  .eyebrow {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #C9973A; margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 30px; color: #FFFFFF; line-height: 1.15; margin-bottom: 10px;
+  }
+  .hero .subtitle {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 15px; color: #C9973A; margin-bottom: 16px; font-weight: 700;
+  }
+  .hero .byline { font-size: 11px; font-weight: 700; color: #FFFFFF; margin-bottom: 3px; }
+  .hero .byline-sub { font-size: 11px; font-weight: 700; color: #FFFFFF; margin-bottom: 10px; }
+  .hero .desc { font-size: 10.5px; color: #D8DCE5; line-height: 1.6; }
+
+  .card {
+    background: #F6EFE3; border-radius: 8px; padding: 20px 24px;
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+  }
+  .card h3 { font-size: 14px; font-weight: 700; color: #1B2A4A; margin-bottom: 10px; }
+  .card p, .card li { font-size: 10.5px; color: #3A3F4A; line-height: 1.6; }
+  .card ul { list-style: none; padding-left: 0; }
+  .card li { padding: 5px 0 5px 15px; position: relative; }
+  .card li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: #C9973A; }
+  .card li strong { color: #1B2A4A; }
+
+  .divider { border: none; border-top: 1px solid #D9D9D9; margin: 22px 0; }
+
+  .section-header {
+    display: flex; align-items: stretch; gap: 12px;
+    background: linear-gradient(90deg, #F5F3EF 0%, #FFFFFF 100%);
+    border-radius: 8px; padding: 16px 20px; margin-bottom: 14px;
+    page-break-inside: avoid;
+  }
+  .section-header .accent { width: 4px; background: #C9973A; border-radius: 2px; flex-shrink: 0; }
+  .section-header h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: #1B2A4A; margin-bottom: 3px; font-weight: 700; }
+  .section-header p { font-size: 10.5px; color: #5A5F6A; }
+
+  .table-grid {
+    display: grid; gap: 0; border: 1px solid #D9D9D9; border-radius: 6px; overflow: hidden;
+    margin: 10px 0;
+    page-break-inside: avoid;
+  }
+  .table-grid .th {
+    background: #1B2A4A; color: #FFFFFF; font-size: 9.5px;
+    font-weight: 700; padding: 7px 10px; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .table-grid .td {
+    padding: 7px 10px; font-size: 10px; color: #3A3F4A;
+    border-top: 1px solid #E5E7EB; background: #FFFFFF; line-height: 1.5;
+  }
+
+  .ladder-step {
+    display: flex; gap: 12px; padding: 12px 0;
+    border-bottom: 1px solid #E5E7EB; align-items: flex-start;
+    page-break-inside: avoid;
+  }
+  .ladder-step:last-child { border-bottom: none; }
+  .ladder-level {
+    background: #1B2A4A; color: #FFFFFF; border-radius: 6px;
+    width: 40px; height: 40px; display: flex; align-items: center;
+    justify-content: center; font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px; font-weight: 700; flex-shrink: 0;
+  }
+  .ladder-level.gold { background: #C9973A; }
+  .ladder-content { flex: 1; }
+  .ladder-content h4 { font-size: 12px; color: #1B2A4A; margin-bottom: 3px; font-weight: 700; }
+  .ladder-content p { font-size: 10px; color: #3A3F4A; }
+
+  .dashboard-row {
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    padding: 7px 0; border-bottom: 1px solid #E5E7EB;
+    font-size: 10px;
+    page-break-inside: avoid;
+  }
+  .dashboard-row.header { font-weight: 700; color: #1B2A4A; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 2px solid #1B2A4A; }
+  .dashboard-row:last-child { border-bottom: none; }
+
+  .checklist-item {
+    display: flex; gap: 8px; padding: 7px 0;
+    border-bottom: 1px solid #E5E7EB; align-items: flex-start;
+    page-break-inside: avoid;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .check-box { width: 14px; height: 14px; border: 1.5px solid #9CA3AF; border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+
+  .footer {
+    text-align: center; padding-top: 20px; margin-top: 20px;
+    border-top: 1.5px solid #D9D9D9;
+  }
+  .footer p { font-size: 10px; color: #9CA3AF; margin-bottom: 2px; }
+
+  .page-break { page-break-before: always; }
+
+  @media print { body { padding: 0; } .page-break { page-break-before: always; } }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hero + Trust Breaks + Procedure Map -->
+<div class="hero">
+  <p class="eyebrow">Free Resource &nbsp;|&nbsp; The MBA PA</p>
+  <h1>Surgeon Trust<br>Accelerator</h1>
+  <p class="subtitle">Building Documented APP Competency That Earns Full Autonomy</p>
+  <p class="byline">By Pol Martin D. Vedar, PA-C, MBA</p>
+  <p class="byline-sub">The MBA PA</p>
+  <p class="desc">A framework for cardiac surgery programs to make trust visible, transferable, and systematic — replacing interpersonal guesswork with documented competency evidence that accelerates APP autonomy and survives surgeon turnover.</p>
+</div>
+
+<div class="card">
+  <h3>Why Surgeon Trust Breaks — And Why "More Time in the Room" Doesn't Fix It</h3>
+  <p style="margin-bottom:10px;">The default approach to surgeon-APP trust is passive: put them in cases together, let the relationship develop organically, and assume competence will eventually speak for itself. Here's what actually happens:</p>
+  <div class="table-grid" style="grid-template-columns:1fr 1fr;">
+    <div class="th">The Default Approach</div>
+    <div class="th">What It Produces</div>
+    <div class="td">APP shadows for 4-8 weeks with no defined benchmarks</div>
+    <div class="td">Surgeon develops opinion based on 2-3 memorable moments (usually errors), not overall trajectory</div>
+    <div class="td">Competency determined by "when the surgeon says they're ready"</div>
+    <div class="td">Different surgeons have different thresholds. Same APP — one signs off at month 3, another at month 9.</div>
+    <div class="td">No documentation of specific procedure volumes or outcomes</div>
+    <div class="td">When a new surgeon joins, the APP starts from zero — no transferable credibility</div>
+    <div class="td">Trust assumed after a certain number of cases</div>
+    <div class="td">Trust is withdrawn silently. One bad case can reset months of progress without documentation.</div>
+  </div>
+  <p style="margin-top:12px; font-style:italic; color:#5A5F6A;">Surgeons build trust methodically: one procedure, one outcome, one repetition at a time. If your program doesn't mirror that methodical approach with documentation, you're always betting on personality instead of process.</p>
+</div>
+
+<!-- Procedure Autonomy Gradient -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>1) The Procedure Autonomy Gradient</h3>
+    <p>Define what trust looks like for every procedure — from observation to full autonomy.</p>
+  </div>
+</div>
+
+<div class="table-grid" style="grid-template-columns:80px 1fr 1fr 1fr;">
+  <div class="th">Level</div>
+  <div class="th">Definition</div>
+  <div class="th">Trust Implication</div>
+  <div class="th">Documentation Required</div>
+  <div class="td" style="font-weight:700;">L0 — Observation</div>
+  <div class="td">APP watches, may verbalize steps. No hands-on.</div>
+  <div class="td">Zero trust. Baseline exposure.</div>
+  <div class="td">Case log with procedure code and date</div>
+  <div class="td" style="font-weight:700;">L1 — Partial Participation</div>
+  <div class="td">APP performs discrete, low-risk sub-tasks under direct supervision (skin closure, scope holding, branch ligation)</div>
+  <div class="td">Trust in isolated components</div>
+  <div class="td">Procedure-specific checklist with sub-task sign-off</div>
+  <div class="td" style="font-weight:700;">L2 — Supervised Full</div>
+  <div class="td">APP performs entire procedure with attending scrubbed, ready to intervene</div>
+  <div class="td">Trust in technical execution under oversight</div>
+  <div class="td">Full procedure evaluation form with attending signature</div>
+  <div class="td" style="font-weight:700;">L3 — Independent / Available</div>
+  <div class="td">APP performs independently; attending in OR suite but not scrubbed unless called</div>
+  <div class="td">Trust in independent judgment and technical execution</div>
+  <div class="td">Independent procedure log with outcome notation</div>
+  <div class="td" style="font-weight:700;">L4 — Full Autonomy</div>
+  <div class="td">APP performs without attending presence; attending available by phone</div>
+  <div class="td">Complete trust. APP is procedure owner.</div>
+  <div class="td">Autonomy sign-off with surgeon attestation</div>
+</div>
+
+<p style="font-size:10.5px; color:#5A5F6A; margin-top:12px;"><strong>Implementation:</strong> Map every procedure your APPs perform — not just the big ones. Include the "small" procedures where trust erosion often hides: sternotomy closure, chest tube insertion, central line, arterial line, TEE probe positioning. For each, define L0-L4 specifically. "Independently harvests vein" is not specific. "Independently performs endoscopic saphenous vein harvest from incision to conduit handoff, including CO2 management, branch ligation, thermal spread prevention, and standardized handoff with documented conduit grade" — that's specific.</p>
+
+<!-- PAGE 2: Competency Documentation + Trust Reset -->
+<div class="hero" style="padding:20px 26px; margin-bottom:20px;">
+  <p class="eyebrow">Surgeon Trust Accelerator &nbsp;—&nbsp; Page 2</p>
+  <h1 style="font-size:24px;">Competency Documentation<br>&amp; Trust Reset Protocol</h1>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>2) The Individual APP Competency Dashboard</h3>
+    <p>Make progress visible in a format surgeons recognize as credible. Surgeons trust data. Give them data.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Living Competency Dashboard</h3>
+  <div class="table-grid" style="grid-template-columns:1fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr;">
+    <div class="th">Procedure</div><div class="th">Level</div><div class="th">Last Adv.</div><div class="th">Cases</div><div class="th">Target</div><div class="th">To Gate</div>
+    <div class="td">Endoscopic SVH</div><div class="td">L3</div><div class="td">2026-05-12</div><div class="td">34</div><div class="td">L4</div><div class="td">16</div>
+    <div class="td">Radial harvest</div><div class="td">L2</div><div class="td">2026-04-28</div><div class="td">11</div><div class="td">L3</div><div class="td">9</div>
+    <div class="td">Sternotomy closure</div><div class="td">L4</div><div class="td">2026-01-15</div><div class="td">62</div><div class="td">L4</div><div class="td">N/A</div>
+    <div class="td">Central line</div><div class="td">L4</div><div class="td">2025-11-03</div><div class="td">89</div><div class="td">L4</div><div class="td">N/A</div>
+  </div>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>3) The Gate Advancement Packet</h3>
+    <p>When an APP is ready to advance — hand the surgeon evidence, not a gut check.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Gate Packet Contents</h3>
+  <ol style="padding-left:18px; margin-top:6px;">
+    <li style="margin-bottom:6px;"><strong>Case log:</strong> Every procedure at current level, with dates and attending names</li>
+    <li style="margin-bottom:6px;"><strong>Outcome summary:</strong> Complications, rejections, take-overs, notable events — full history, not cherry-picked</li>
+    <li style="margin-bottom:6px;"><strong>Preceptor evaluations:</strong> Structured feedback from each surgeon the APP has worked with</li>
+    <li style="margin-bottom:6px;"><strong>Self-assessment:</strong> APP's own reflection on readiness, strengths, and areas for continued development</li>
+    <li><strong>Advancement recommendation:</strong> "Based on [X] cases with [Y] outcomes and [Z] preceptor sign-offs, advancement recommended effective [date]."</li>
+  </ol>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>4) The "Trust Reset" Protocol</h3>
+    <p>When trust is withdrawn — document it like any other clinical event.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Trust Reset Documentation</h3>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div><strong style="color:#1B2A4A;">Event description:</strong> What happened? Objective, no blame language.</div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div><strong style="color:#1B2A4A;">Trust impact:</strong> What specifically is the surgeon no longer comfortable with? (e.g., "No longer comfortable with independent radial harvest" — not "lost trust in APP")</div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div><strong style="color:#1B2A4A;">Return-to-trust path:</strong> How many supervised cases at what level before re-evaluation?</div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div><strong style="color:#1B2A4A;">Timeline:</strong> When will re-evaluation occur?</div>
+  </div>
+  <div class="checklist-item">
+    <div class="check-box"></div>
+    <div><strong style="color:#1B2A4A;">Surgeon sign-off:</strong> The affected surgeon agrees to the return-to-trust criteria.</div>
+  </div>
+  <p style="margin-top:10px; font-style:italic; color:#5A5F6A;">Trust resets are normal in high-stakes clinical environments. What's abnormal is leaving them undocumented and unresolved.</p>
+</div>
+
+<!-- PAGE 3: Surgeon Onboarding + Trust Metrics -->
+<div class="hero" style="padding:20px 26px; margin-bottom:20px;">
+  <p class="eyebrow">Surgeon Trust Accelerator &nbsp;—&nbsp; Page 3</p>
+  <h1 style="font-size:24px;">New-Surgeon Trust Transfer<br>&amp; Trust Metrics Dashboard</h1>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>5) New-Surgeon APP Briefing — Transfer Trust, Don't Rebuild It</h3>
+    <p>When a new surgeon joins, hand them evidence — not an awkward introduction.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Briefing Document Contents</h3>
+  <ol style="padding-left:18px; margin-top:6px;">
+    <li style="margin-bottom:5px;"><strong>APP roster with competency dashboards:</strong> Every APP, every procedure, current autonomy level, case volumes</li>
+    <li style="margin-bottom:5px;"><strong>Program trust standards:</strong> "In this program, an APP advances to L3 after [X] supervised cases with [Y] outcomes."</li>
+    <li style="margin-bottom:5px;"><strong>Escalation protocol:</strong> "If you believe an APP's autonomy should be adjusted, here's how — a documented trust reset with defined return criteria."</li>
+    <li><strong>Preceptor expectations:</strong> "As an attending, you're expected to complete a brief evaluation after each supervised case. This builds the evidence base."</li>
+  </ol>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>6) 90-Day Trust Transfer Plan for New Surgeons</h3>
+  </div>
+</div>
+
+<div class="table-grid" style="grid-template-columns:60px 1fr 1fr;">
+  <div class="th">Week</div><div class="th">Focus</div><div class="th">Output</div>
+  <div class="td" style="font-weight:700;">1-2</div><div class="td">Surgeon observes all APPs at documented autonomy levels</div><div class="td">Confirms or flags discrepancies vs. observed performance</div>
+  <div class="td" style="font-weight:700;">3-4</div><div class="td">Surgeon works primarily with L4 APPs on complex procedures</div><div class="td">Calibrates to program standards for "full autonomy"</div>
+  <div class="td" style="font-weight:700;">5-8</div><div class="td">Surgeon supervises L2-L3 APPs with documented competency packets</div><div class="td">Adds evaluation data to existing APP records</div>
+  <div class="td" style="font-weight:700;">9-12</div><div class="td">Full integration — program-standard autonomy assignments</div><div class="td">Outstanding trust flags resolved or converted to formal protocols</div>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>7) Trust Metrics Dashboard</h3>
+    <p>Track what surgeons actually care about: outcomes, efficiency, reliability.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Quarterly Trust Metrics</h3>
+  <div class="table-grid" style="grid-template-columns:1fr 1.2fr 0.8fr 0.8fr 0.8fr;">
+    <div class="th">Metric</div><div class="th">Definition</div><div class="th">Green</div><div class="th">Yellow</div><div class="th">Red</div>
+    <div class="td"><strong>Time to L3</strong></div><div class="td">Median weeks from hire to independent status on core procedures</div><div class="td">≤16 wks</div><div class="td">17-24 wks</div><div class="td">&gt;24 wks</div>
+    <div class="td"><strong>Trust Score</strong></div><div class="td">Quarterly anonymous surgeon survey (1-5)</div><div class="td">≥4.5</div><div class="td">3.5-4.4</div><div class="td">&lt;3.5</div>
+    <div class="td"><strong>Autonomy Utilization</strong></div><div class="td">% of cases where APPs operate at documented autonomy level</div><div class="td">≥90%</div><div class="td">75-89%</div><div class="td">&lt;75%</div>
+    <div class="td"><strong>Trust Resets</strong></div><div class="td">Formal trust reset protocols activated per quarter</div><div class="td">0</div><div class="td">1</div><div class="td">≥2</div>
+    <div class="td"><strong>Reset Resolution</strong></div><div class="td">Median weeks to return-to-trust sign-off</div><div class="td">≤4 wks</div><div class="td">5-8 wks</div><div class="td">&gt;8 wks</div>
+    <div class="td"><strong>New Surgeon Transfer</strong></div><div class="td">Median weeks for new surgeon to confirm existing APP autonomy levels</div><div class="td">≤4 wks</div><div class="td">5-8 wks</div><div class="td">&gt;8 wks</div>
+  </div>
+</div>
+
+<!-- PAGE 4: Self-Assessment + CTA -->
+<div class="hero" style="padding:20px 26px; margin-bottom:20px;">
+  <p class="eyebrow">Surgeon Trust Accelerator &nbsp;—&nbsp; Page 4</p>
+  <h1 style="font-size:24px;">Program Self-Assessment<br>&amp; Implementation Toolkit</h1>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>8) Self-Assessment — Personality or System?</h3>
+    <p>Rate your program across 7 dimensions of trust infrastructure.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Seven Dimensions of Trust System Maturity</h3>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#1B2A4A; width:22px; text-align:center;">1</div>
+    <div><strong style="color:#1B2A4A;">Procedure autonomy levels formally defined</strong>
+    <p>0 pts — No levels. 1 pt — Informal expectations. 2 pts — Every procedure has documented L0-L4 criteria. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#C9973A; width:22px; text-align:center;">2</div>
+    <div><strong style="color:#1B2A4A;">Competency documented with case logs and outcomes</strong>
+    <p>0 pts — Not documented. 1 pt — Incomplete logs. 2 pts — Living dashboards updated monthly. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#1B2A4A; width:22px; text-align:center;">3</div>
+    <div><strong style="color:#1B2A4A;">Advancement uses structured gate packets</strong>
+    <p>0 pts — "Surgeon says ready." 1 pt — Some documentation. 2 pts — Full packet: case log, outcomes, preceptor evals, self-assessment. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#C9973A; width:22px; text-align:center;">4</div>
+    <div><strong style="color:#1B2A4A;">Trust resets have documented protocol</strong>
+    <p>0 pts — Informal. 1 pt — Verbal criteria. 2 pts — Written protocol with return path, timeline, surgeon sign-off. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#1B2A4A; width:22px; text-align:center;">5</div>
+    <div><strong style="color:#1B2A4A;">New surgeons receive APP competency briefing</strong>
+    <p>0 pts — Nothing. 1 pt — Verbal overview. 2 pts — Written briefing with individual APP dashboards. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#C9973A; width:22px; text-align:center;">6</div>
+    <div><strong style="color:#1B2A4A;">Surgeon trust systematically measured</strong>
+    <p>0 pts — Never measured. 1 pt — Informal feedback. 2 pts — Quarterly anonymous survey with trended data. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#1B2A4A; width:22px; text-align:center;">7</div>
+    <div><strong style="color:#1B2A4A;">Autonomy utilization systematically tracked</strong>
+    <p>0 pts — Not tracked. 1 pt — Anecdotally aware. 2 pts — Measured and reviewed quarterly. &nbsp; Score: ___ / 2</p></div>
+  </div>
+
+  <div style="margin-top:14px; padding-top:12px; border-top:1.5px solid #D9D9D9;">
+    <p style="font-weight:700; color:#1B2A4A;">Composite Score: ___ / 14</p>
+    <table style="width:100%; border-collapse:collapse; font-size:10px; margin-top:10px;">
+      <tr style="border-bottom:1px solid #E5E7EB;">
+        <td style="padding:5px 7px; font-weight:700; color:#1B2A4A;">10–14</td>
+        <td style="padding:5px 7px; color:#3A3F4A;"><strong>Systematized.</strong> Trust transfers between surgeons. New APP integration is accelerated. Trust disruptions have defined recovery paths.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #E5E7EB;">
+        <td style="padding:5px 7px; font-weight:700; color:#C9973A;">5–9</td>
+        <td style="padding:5px 7px; color:#3A3F4A;"><strong>Developing.</strong> Pieces in place, but the system lives in your APP lead's head. If they leave, trust infrastructure leaves with them.</td>
+      </tr>
+      <tr>
+        <td style="padding:5px 7px; font-weight:700; color:#CC3333;">0–4</td>
+        <td style="padding:5px 7px; color:#3A3F4A;"><strong>Personality-Dependent.</strong> Trust is a function of individual relationships. One new surgeon, one APP departure, or one bad outcome can destabilize everything.</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <h3>What's Inside the Full Surgeon Trust Accelerator Toolkit</h3>
+  <ul>
+    <li><strong>Procedure autonomy gradient templates</strong> — L0-L4 definitions for 15+ cardiac OR procedures</li>
+    <li><strong>APP competency dashboard template</strong> — spreadsheet-ready, presentation-ready, surgeon-review-ready</li>
+    <li><strong>Gate advancement packet template</strong> — case log, outcome summary, preceptor evaluation, recommendation letter</li>
+    <li><strong>Trust reset protocol template</strong> — event documentation, return criteria, timeline, surgeon sign-off</li>
+    <li><strong>New-surgeon APP briefing template</strong> — APP roster, dashboards, program standards, escalation protocol</li>
+    <li><strong>Quarterly trust metrics dashboard</strong> — pre-built with green/yellow/red zones and trend tracking</li>
+    <li><strong>Surgeon trust survey instrument</strong> — anonymous, validated, ready to deploy</li>
+  </ul>
+  <p style="margin-top:10px; font-weight:700; color:#1B2A4A;">Book a free discovery call → <span style="color:#C9973A;">themba-pa.com/discovery-call</span></p>
+</div>
+
+<div class="footer">
+  <p style="font-family:'Playfair Display',Georgia,serif; font-size:12px; color:#1B2A4A; font-weight:700;">The MBA PA</p>
+  <p>Pol Vedar, PA-C, MBA — Cardiothoracic Surgery</p>
+  <p>pol@themba-pa.com &nbsp;|&nbsp; themba-pa.com</p>
+  <p style="margin-top:8px; font-size:9px; color:#9CA3AF;">This is an operational systems framework, not clinical teaching or patient-care directives. It draws on established organizational psychology and surgical education principles applied to cardiac surgery team management.</p>
+  <p style="font-size:9px; color:#9CA3AF;">&copy; 2026 The MBA PA. All rights reserved.</p>
+</div>
+
+</body>
+</html>

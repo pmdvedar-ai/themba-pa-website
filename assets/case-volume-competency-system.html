@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Case-Volume Competency System | The MBA PA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+<style>
+  @page { size: letter; margin: 0.6in 0.7in; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #3A3F4A;
+    font-size: 10.5px;
+    line-height: 1.6;
+    max-width: 7.1in;
+    margin: 0 auto;
+    padding: 0.5in 0;
+  }
+  .hero {
+    background: linear-gradient(135deg, #1B2A4A 0%, #243558 100%);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    page-break-inside: avoid;
+  }
+  .eyebrow {
+    font-size: 9px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #C9973A; margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 30px; color: #FFFFFF; line-height: 1.15; margin-bottom: 10px;
+  }
+  .hero .subtitle {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 15px; color: #C9973A; margin-bottom: 16px; font-weight: 700;
+  }
+  .hero .byline { font-size: 11px; font-weight: 700; color: #FFFFFF; margin-bottom: 3px; }
+  .hero .byline-sub { font-size: 11px; font-weight: 700; color: #FFFFFF; margin-bottom: 10px; }
+  .hero .desc { font-size: 10.5px; color: #D8DCE5; line-height: 1.6; }
+
+  .card {
+    background: #F6EFE3; border-radius: 8px; padding: 20px 24px;
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+  }
+  .card h3 { font-size: 14px; font-weight: 700; color: #1B2A4A; margin-bottom: 10px; }
+  .card p, .card li { font-size: 10.5px; color: #3A3F4A; line-height: 1.6; }
+  .card ul { list-style: none; padding-left: 0; }
+  .card li { padding: 5px 0 5px 15px; position: relative; }
+  .card li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: #C9973A; }
+  .card li strong { color: #1B2A4A; }
+
+  .divider { border: none; border-top: 1px solid #D9D9D9; margin: 22px 0; }
+
+  .section-header {
+    display: flex; align-items: stretch; gap: 12px;
+    background: linear-gradient(90deg, #F5F3EF 0%, #FFFFFF 100%);
+    border-radius: 8px; padding: 16px 20px; margin-bottom: 14px;
+    page-break-inside: avoid;
+  }
+  .section-header .accent { width: 4px; background: #C9973A; border-radius: 2px; flex-shrink: 0; }
+  .section-header h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: #1B2A4A; margin-bottom: 3px; font-weight: 700; }
+  .section-header p { font-size: 10.5px; color: #5A5F6A; }
+
+  .table-grid {
+    display: grid; gap: 0; border: 1px solid #D9D9D9; border-radius: 6px; overflow: hidden;
+    margin: 10px 0;
+    page-break-inside: avoid;
+  }
+  .table-grid .th {
+    background: #1B2A4A; color: #FFFFFF; font-size: 9.5px;
+    font-weight: 700; padding: 7px 10px; text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .table-grid .td {
+    padding: 7px 10px; font-size: 10px; color: #3A3F4A;
+    border-top: 1px solid #E5E7EB; background: #FFFFFF; line-height: 1.5;
+  }
+
+  .checklist-item {
+    display: flex; gap: 8px; padding: 7px 0;
+    border-bottom: 1px solid #E5E7EB; align-items: flex-start;
+    page-break-inside: avoid;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .check-box { width: 14px; height: 14px; border: 1.5px solid #9CA3AF; border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+
+  .ladder-step {
+    display: flex; gap: 12px; padding: 12px 0;
+    border-bottom: 1px solid #E5E7EB; align-items: flex-start;
+    page-break-inside: avoid;
+  }
+  .ladder-step:last-child { border-bottom: none; }
+  .ladder-level {
+    background: #1B2A4A; color: #FFFFFF; border-radius: 6px;
+    width: 40px; height: 40px; display: flex; align-items: center;
+    justify-content: center; font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px; font-weight: 700; flex-shrink: 0;
+  }
+  .ladder-level.gold { background: #C9973A; }
+  .ladder-content { flex: 1; }
+  .ladder-content h4 { font-size: 12px; color: #1B2A4A; margin-bottom: 3px; font-weight: 700; }
+  .ladder-content p { font-size: 10px; color: #3A3F4A; }
+
+  .footer {
+    text-align: center; padding-top: 20px; margin-top: 20px;
+    border-top: 1.5px solid #D9D9D9;
+  }
+  .footer p { font-size: 10px; color: #9CA3AF; margin-bottom: 2px; }
+
+  .page-break { page-break-before: always; }
+
+  @media print { body { padding: 0; } .page-break { page-break-before: always; } }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Hero + Calendar Failure + Case Architecture -->
+<div class="hero">
+  <p class="eyebrow">Free Resource &nbsp;|&nbsp; The MBA PA</p>
+  <h1>Case-Volume<br>Competency System</h1>
+  <p class="subtitle">Replace Calendar-Based APP Onboarding with Evidence-Driven Surgical Development</p>
+  <p class="byline">By Pol Martin D. Vedar, PA-C, MBA</p>
+  <p class="byline-sub">The MBA PA</p>
+  <p class="desc">A framework for cardiac surgery programs to define readiness by case exposure — not calendar duration. Includes case complexity classification, weighted volume targets, critical case-type checklists, and structured competency gates that produce autonomous APPs faster and more consistently.</p>
+</div>
+
+<div class="card">
+  <h3>Why Calendar-Based Onboarding Produces Uneven Results — Every Single Time</h3>
+  <p style="margin-bottom:10px;">Time-based onboarding doesn't fail because the timeline is wrong. It fails because time is the wrong unit of measurement for surgical competence.</p>
+  <div class="table-grid" style="grid-template-columns:1fr 1fr;">
+    <div class="th">What the Calendar Says</div>
+    <div class="th">What the Cases Actually Delivered</div>
+    <div class="td">"90 days of cardiac surgery onboarding complete"</div>
+    <div class="td">APP shadowed 32 CABGs, 4 valves. Never managed a bleeding patient. Never cannulated independently. Never saw femoral-femoral bypass.</div>
+    <div class="td">"Six-month competency evaluation passed"</div>
+    <div class="td">Evaluation marked "satisfactory" by a surgeon who worked with this APP on 4 cases total. Sample too small to mean anything.</div>
+    <div class="td">"One-year mark — independent OR assignment"</div>
+    <div class="td">APP independent on veins for 6 months. Never harvested a radial. Never managed conduit spasm. First independent assignment pairs them with a surgeon who doesn't know their gaps.</div>
+    <div class="td">"Standardized 12-month program for all APPs"</div>
+    <div class="td">Three APPs hired 2 months apart: one plateaued at month 4 from boredom (came from high-volume center), one needed 2x exposure (came from low-acuity hospital), one ready at month 7. All treated identically.</div>
+  </div>
+  <p style="margin-top:12px; font-style:italic; color:#5A5F6A;">The calendar doesn't measure experience. It measures attendance. And in cardiac surgery, attendance is not a clinical credential.</p>
+</div>
+
+<!-- Case Complexity Classification -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>1) Case Complexity Classification</h3>
+    <p>Not all cases are equal. Volume targets are meaningless without complexity weighting.</p>
+  </div>
+</div>
+
+<div class="table-grid" style="grid-template-columns:70px 1fr 1fr 65px;">
+  <div class="th">Tier</div><div class="th">Definition</div><div class="th">Examples</div><div class="th">Weight</div>
+  <div class="td" style="font-weight:700; color:#1B2A4A;">Tier 1 — Routine</div>
+  <div class="td">Standard procedure, stable patient, predictable course</div>
+  <div class="td">Elective CABG x3-4, single valve AVR/MVR, stable hemodynamics, no prior sternotomy</div>
+  <div class="td">1.0x</div>
+  <div class="td" style="font-weight:700; color:#C9973A;">Tier 2 — Complex</div>
+  <div class="td">Multiple procedures, moderate risk factors, challenging anatomy</div>
+  <div class="td">CABG + valve, redo sternotomy, low EF (&lt;35%), porcelain aorta, carotid + CABG</div>
+  <div class="td">1.5x</div>
+  <div class="td" style="font-weight:700; color:#CC3333;">Tier 3 — High-Acuity</div>
+  <div class="td">Emergent/urgent, hemodynamically unstable, unusual procedure</div>
+  <div class="td">Emergent CABG for STEMI, acute Type A dissection, post-arrest surgery, ECMO cannulation, cardiac trauma</div>
+  <div class="td">2.0x</div>
+</div>
+
+<!-- Weighted Case Volume Targets -->
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>2) Weighted Case Volume Targets by APP Role</h3>
+    <p>Define readiness in case-volume terms for each development stage.</p>
+  </div>
+</div>
+
+<div class="table-grid" style="grid-template-columns:1fr 0.8fr 0.6fr 0.6fr 0.6fr 0.8fr;">
+  <div class="th">Development Stage</div><div class="th">Weighted Cases</div><div class="th">Tier 1 Min</div><div class="th">Tier 2 Min</div><div class="th">Tier 3 Min</div><div class="th">Surgeon Diversity</div>
+  <div class="td"><strong>Supervised Assist</strong></div><div class="td">40</div><div class="td">25</div><div class="td">10</div><div class="td">3</div><div class="td">Min 2 attendings</div>
+  <div class="td"><strong>Transitional Assist</strong></div><div class="td">80</div><div class="td">50</div><div class="td">18</div><div class="td">6</div><div class="td">Min 3 attendings</div>
+  <div class="td"><strong>Independent Assist</strong></div><div class="td">130</div><div class="td">80</div><div class="td">30</div><div class="td">10</div><div class="td">Min 4 attendings</div>
+  <div class="td"><strong>Full Autonomy</strong></div><div class="td">180</div><div class="td">110</div><div class="td">45</div><div class="td">15</div><div class="td">Min 4 + emergent call</div>
+</div>
+
+<p style="font-size:10.5px; color:#5A5F6A; margin-top:10px;"><strong>Key principle:</strong> A weighted case target means an APP who does mostly Tier 3 cases advances faster — appropriately — than one who does only Tier 1 electives. The weighting system rewards exposure to complexity, which builds the judgment that calendar-based onboarding assumes will appear on its own.</p>
+
+<!-- PAGE 2: Critical Checklists + Case Log -->
+<div class="hero" style="padding:20px 26px; margin-bottom:20px;">
+  <p class="eyebrow">Case-Volume Competency System &nbsp;—&nbsp; Page 2</p>
+  <h1 style="font-size:24px;">Critical Case-Type Checklists<br>&amp; The Living Case Log</h1>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>3) Critical Case-Type Checklists</h3>
+    <p>Certain experiences must appear in an APP's log before advancement. These separate someone who can assist from someone who can anticipate.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Before Independent Assist</h3>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Cannulation: arterial</strong> — ≥10 cases</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Cannulation: venous (single-stage)</strong> — ≥10 cases</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Cannulation: femoral/axillary alternative access</strong> — ≥3 cases</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Cannulation: bicaval</strong> — ≥5 cases</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Chest closure — all layers</strong> — ≥15 cases</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Femoral-femoral bypass setup</strong> — ≥2 cases</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Coming off bypass — observation and assisted weaning</strong> — ≥8 cases</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Post-protamine hemostasis and chest exploration</strong> — ≥10 cases</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Redo sternotomy (assisted)</strong> — ≥1 case</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Intraoperative complication management</strong> — ≥1 case with documented attending debrief</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Chest re-opening for post-op bleeding</strong> — ≥3 cases</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Acute Type A dissection (assisted, incl. cooling and circulatory arrest)</strong> — ≥1 case</div></div>
+</div>
+
+<br/>
+
+<div class="card">
+  <h3>Before Full Autonomy (add to above)</h3>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">All above at independent level</strong></div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Emergent off-pump → on-pump conversion</strong> — ≥1 case</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">ECMO cannulation or decannulation</strong> — ≥2 cases</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Cardiac trauma or penetrating injury (or simulated equivalent)</strong> — ≥1 case</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong style="color:#1B2A4A;">Independent intraoperative crisis management with attending present</strong> — ≥2 cases, documented</div></div>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>4) The Living Case Log Dashboard</h3>
+    <p>The case log isn't a compliance document. It's the operating system of your APP development program.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>What a Functional Case Log Captures (Per Case)</h3>
+  <div class="table-grid" style="grid-template-columns:1fr 1fr 1.5fr;">
+    <div class="th">Field</div><div class="th">Why It Matters</div><div class="th">Example</div>
+    <div class="td"><strong>Date + OR room</strong></div><div class="td">Tracks density and spacing of exposure</div><div class="td">2026-07-06, OR 4</div>
+    <div class="td"><strong>Procedure(s)</strong></div><div class="td">Primary and secondary procedures</div><div class="td">CABG x4 + LIMA→LAD, SVG→OM1, PDA, RCA</div>
+    <div class="td"><strong>Case tier</strong></div><div class="td">Weighted volume tracking</div><div class="td">Tier 2 (low EF 30%)</div>
+    <div class="td"><strong>Attending surgeon</strong></div><div class="td">Diversity requirement tracking</div><div class="td">Dr. Chen</div>
+    <div class="td"><strong>APP role</strong></div><div class="td">Granular role description</div><div class="td">Assisted cannulation + independent chest closure</div>
+    <div class="td"><strong>Skills performed</strong></div><div class="td">Specific, not "assisted"</div><div class="td">Arterial cannulation (Seldinger), proximal anastomosis assist, sternal wire closure</div>
+    <div class="td"><strong>Notable events</strong></div><div class="td">Complications, learning moments</div><div class="td">SVG kinking recognized pre-closure — revised with surgeon</div>
+    <div class="td"><strong>Surgeon feedback</strong></div><div class="td">Captured same-day</div><div class="td">"Good cannulation — work on earlier recognition of conduit length"</div>
+    <div class="td"><strong>Self-assessment</strong></div><div class="td">APP's own reflection</div><div class="td">Confident on cannulation. Need more reps on proximal anastomosis positioning.</div>
+  </div>
+</div>
+
+<!-- PAGE 3: Competency Gates -->
+<div class="hero" style="padding:20px 26px; margin-bottom:20px;">
+  <p class="eyebrow">Case-Volume Competency System &nbsp;—&nbsp; Page 3</p>
+  <h1 style="font-size:24px;">Structured Competency Gates<br>&amp; APP Pace Management</h1>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>5) Competency Gates — Advance When Evidence Says So</h3>
+    <p>Every gate has four components: Volume threshold, Surgeon attestations, Performance evidence, Gate committee decision.</p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Gate I: Supervised → Transitional Assist</h3>
+  <p><strong>Volume threshold:</strong> 40 weighted cases (min 25 Tier 1, 10 Tier 2, 3 Tier 3) + critical checklist complete</p>
+  <p style="margin-top:6px;"><strong>Surgeon attestations (min 2 attendings):</strong></p>
+  <div class="checklist-item"><div class="check-box"></div><div>APP demonstrates safe sterile technique and OR protocol without prompting</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>APP can verbally anticipate next 3-5 steps in a routine CABG sequence</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>APP identifies and communicates abnormal findings without waiting to be asked</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>APP cannulation technique is consistent and safe under direct supervision</div></div>
+  <p style="margin-top:8px;"><strong>Performance evidence:</strong> 5 consecutive cannulations with ≤1 correction required • 3 consecutive chest closures with no sterile field breach • Case log review confirms diversity requirement</p>
+</div>
+
+<div class="card">
+  <h3>Gate II: Transitional → Independent Assist</h3>
+  <p><strong>Volume threshold:</strong> 80 weighted cases (min 50 Tier 1, 18 Tier 2, 6 Tier 3) + critical checklist complete</p>
+  <p style="margin-top:6px;"><strong>Surgeon attestations (min 3 attendings, incl. ≥1 from Tier 2/3 cases):</strong></p>
+  <div class="checklist-item"><div class="check-box"></div><div>APP independently manages cannulation and decannulation without prompting on routine cases</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>APP recognizes and communicates hemodynamic changes during bypass without waiting for direction</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>APP independently manages chest closure including wire placement, hemostasis, and drain positioning</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>APP demonstrates effective communication under pressure — no freezing, no information withholding</div></div>
+  <p style="margin-top:8px;"><strong>Performance evidence:</strong> 10 consecutive cannulations with zero corrections • ≥3 cases where APP independently recognized and escalated a surgical concern before attending • ≥1 complication managed with appropriate escalation and calibration</p>
+</div>
+
+<div class="card">
+  <h3>Gate III: Independent → Full Autonomy</h3>
+  <p><strong>Volume threshold:</strong> 130 weighted cases (min 80 Tier 1, 30 Tier 2, 10 Tier 3) + all critical checklists complete</p>
+  <p style="margin-top:6px;"><strong>Surgeon attestations (min 4 attendings, incl. ≥2 from different surgical groups):</strong></p>
+  <div class="checklist-item"><div class="check-box"></div><div>APP manages full operative sequence independently — anticipating surgeon needs, managing bypass transitions, directing the room during critical moments</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>APP independently troubleshoots: cannulation difficulty, conduit issues, unexpected findings, bleeding — escalates appropriately</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>APP functions as surgical team leader — directing perfusion, anesthesia communication, nursing workflow</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div>APP has demonstrated safe independent judgment in ≥2 emergent/urgent cases</div></div>
+  <p style="margin-top:8px;"><strong>Performance evidence:</strong> 30 consecutive independent cases with zero safety events • 2 documented crisis management events with attending confirmation • All critical case types independently performed • No unresolved trust flags or trust reset protocols active</p>
+</div>
+
+<!-- PAGE 4: Pace Management + Self-Assessment -->
+<div class="hero" style="padding:20px 26px; margin-bottom:20px;">
+  <p class="eyebrow">Case-Volume Competency System &nbsp;—&nbsp; Page 4</p>
+  <h1 style="font-size:24px;">Managing the Fast, Slow, &amp; Stalled APP<br>&amp; Program Self-Assessment</h1>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>6) APP Pace Management — One Size Does Not Fit All</h3>
+  </div>
+</div>
+
+<div class="card">
+  <h3>The Fast APP — Accelerated Advancement</h3>
+  <p>An APP arrives with 3 years of cardiac surgery experience from another center.</p>
+  <div class="checklist-item"><div class="check-box"></div><div><strong>Day 1 case audit:</strong> Map their prior log against your tier definitions and critical checklists. Where are the gaps?</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong>Accelerated track:</strong> Compress supervised phase to what's genuinely new — not a redo of what they already know.</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong>Gap-focused assignment:</strong> Target missing case types. If they've done 100 CABGs but never a femoral cannulation, that's priority one.</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong>Gate eligibility:</strong> Advance when they meet your program's criteria — not when the calendar says they've "done their time."</div></div>
+</div>
+
+<div class="card">
+  <h3>The Slow APP — Structured Support Without Limbo</h3>
+  <p>An APP at 60 weighted cases — surgeon attestations aren't coming.</p>
+  <div class="checklist-item"><div class="check-box"></div><div><strong>Gap diagnosis:</strong> Technical? Judgment? Communication? The case log + surgeon feedback tells you.</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong>Targeted remediation:</strong> Not "observe 10 more cases" — specific goals. "Next 5 cannulations: zero guidewire errors, zero purse-string corrections."</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong>Remediation pairing:</strong> Assign to the surgeon who gives the most structured feedback — not the one who silently does the case and says it "didn't feel right."</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong>Re-evaluation trigger:</strong> "After 15 additional weighted cases with documented performance, re-submit for attestation." Not "we'll check in 3 months."</div></div>
+</div>
+
+<div class="card">
+  <h3>The Stalled APP — When Progress Plateaus</h3>
+  <p>Same competency area stalled 4+ weeks. This is usually a scheduling failure, not a performance failure.</p>
+  <div class="checklist-item"><div class="check-box"></div><div><strong>Dashboard alert:</strong> Living case log flags any competency area with zero new cases in 30 days.</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong>Scheduling intervention:</strong> APP lead works with OR scheduling to prioritize missing case types and surgeon pairing.</div></div>
+  <div class="checklist-item"><div class="check-box"></div><div><strong>Escalation if unresolved:</strong> Gap persisting beyond 60 days despite scheduling intervention → program-level discussion.</div></div>
+</div>
+
+<div class="section-header">
+  <div class="accent"></div>
+  <div>
+    <h3>7) Self-Assessment — Calendar or Cases?</h3>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Seven Dimensions of Competency-Driven Development</h3>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#1B2A4A; width:22px; text-align:center;">1</div>
+    <div><strong style="color:#1B2A4A;">APP onboarding defined by case-volume targets, not calendar milestones</strong>
+    <p>0 pts — Calendar-based. 1 pt — Some case targets. 2 pts — Weighted case-volume targets with tier classification drive all advancement. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#C9973A; width:22px; text-align:center;">2</div>
+    <div><strong style="color:#1B2A4A;">Critical case types identified and tracked for each APP</strong>
+    <p>0 pts — No case-type tracking. 1 pt — Gaps known but no checklist. 2 pts — Written critical case-type checklist with stage-specific requirements. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#1B2A4A; width:22px; text-align:center;">3</div>
+    <div><strong style="color:#1B2A4A;">Case logs capture detailed skills, events, and feedback</strong>
+    <p>0 pts — No logs or bare-minimum codes. 1 pt — Inconsistent logs. 2 pts — Living case logs with skills, events, surgeon feedback, self-assessment. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#C9973A; width:22px; text-align:center;">4</div>
+    <div><strong style="color:#1B2A4A;">Living dashboard shows each APP's progress against competency targets</strong>
+    <p>0 pts — No dashboard. 1 pt — Dashboard exists but irregularly updated. 2 pts — Updated per case, reviewed weekly by APP lead, drives scheduling. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#1B2A4A; width:22px; text-align:center;">5</div>
+    <div><strong style="color:#1B2A4A;">Advancement uses structured gates</strong>
+    <p>0 pts — "Surgeon says ready." 1 pt — Some documentation. 2 pts — Full gate packet: volume threshold, critical checklist, attestations, performance evidence, committee decision. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item" style="border-bottom:1px solid #E5E7EB;">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#C9973A; width:22px; text-align:center;">6</div>
+    <div><strong style="color:#1B2A4A;">Fast-track and remediation pathways exist</strong>
+    <p>0 pts — Everyone follows same timeline. 1 pt — Informal accommodations. 2 pts — Written protocols for accelerated advancement, targeted remediation, stall intervention. &nbsp; Score: ___ / 2</p></div>
+  </div>
+  <div class="checklist-item">
+    <div style="font-family:'Playfair Display',Georgia,serif; font-size:16px; font-weight:700; color:#1B2A4A; width:22px; text-align:center;">7</div>
+    <div><strong style="color:#1B2A4A;">Scheduling actively targets APP competency gaps</strong>
+    <p>0 pts — APPs assigned by availability only. 1 pt — APP lead occasionally advocates. 2 pts — Systematic gap-driven scheduling — APP lead reviews dashboard weekly and coordinates with OR scheduling. &nbsp; Score: ___ / 2</p></div>
+  </div>
+
+  <div style="margin-top:14px; padding-top:12px; border-top:1.5px solid #D9D9D9;">
+    <p style="font-weight:700; color:#1B2A4A;">Composite Score: ___ / 14</p>
+    <table style="width:100%; border-collapse:collapse; font-size:10px; margin-top:10px;">
+      <tr style="border-bottom:1px solid #E5E7EB;">
+        <td style="padding:5px 7px; font-weight:700; color:#1B2A4A;">10–14</td>
+        <td style="padding:5px 7px; color:#3A3F4A;"><strong>Competency-Driven.</strong> APPs developed by what they've done, not how long they've been employed. Surgeons trust the system because evidence is visible. APPs trust it because the path is clear.</td>
+      </tr>
+      <tr style="border-bottom:1px solid #E5E7EB;">
+        <td style="padding:5px 7px; font-weight:700; color:#C9973A;">5–9</td>
+        <td style="padding:5px 7px; color:#3A3F4A;"><strong>Transitioning.</strong> Tracking cases but calendar is still primary decision tool. Advancement relies more on gut feel than structured evidence. Pieces are there — need to be connected into a system.</td>
+      </tr>
+      <tr>
+        <td style="padding:5px 7px; font-weight:700; color:#CC3333;">0–4</td>
+        <td style="padding:5px 7px; color:#3A3F4A;"><strong>Calendar-Dependent.</strong> Time served, not experience earned. Fast APPs bored. Slow APPs invisible until evaluation day. Nobody knows who's actually ready for what.</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <h3>What's Inside the Full Case-Volume Competency System Toolkit</h3>
+  <ul>
+    <li><strong>Case complexity classification guide</strong> — Tier 1/2/3 definitions for 25+ cardiac surgery procedure types with weighting rationale</li>
+    <li><strong>Role-specific case-volume target calculator</strong> — adjustable targets for first-assist, vein harvest, ICU-transition, and combined roles</li>
+    <li><strong>Critical case-type checklist builder</strong> — stage-specific templates with anatomical rationale</li>
+    <li><strong>Living case log template</strong> — structured format with skills, feedback, self-assessment, and dashboard auto-population</li>
+    <li><strong>Competency gate packet templates</strong> — Stage I→II→III→IV with volume thresholds, attestation forms, performance evidence requirements</li>
+    <li><strong>Accelerated advancement protocol</strong> — fast-track pathway with prior-case audit and gap-focused scheduling guide</li>
+    <li><strong>Remediation and stall intervention protocol</strong> — targeted remediation plan, re-evaluation triggers, scheduling escalation workflow</li>
+  </ul>
+  <p style="margin-top:10px; font-weight:700; color:#1B2A4A;">Book a free discovery call → <span style="color:#C9973A;">themba-pa.com/discovery-call</span></p>
+</div>
+
+<div class="footer">
+  <p style="font-family:'Playfair Display',Georgia,serif; font-size:12px; color:#1B2A4A; font-weight:700;">The MBA PA</p>
+  <p>Pol Vedar, PA-C, MBA — Cardiothoracic Surgery</p>
+  <p>pol@themba-pa.com &nbsp;|&nbsp; themba-pa.com</p>
+  <p style="margin-top:8px; font-size:9px; color:#9CA3AF;">This is an operational systems framework, not clinical teaching or patient-care directives. It draws on established principles of competency-based medical education applied to cardiac surgery workforce development.</p>
+  <p style="font-size:9px; color:#9CA3AF;">&copy; 2026 The MBA PA. All rights reserved.</p>
+</div>
+
+</body>
+</html>
