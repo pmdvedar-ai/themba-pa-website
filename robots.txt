@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://themba-pa.com/resources/sitemap.xml
