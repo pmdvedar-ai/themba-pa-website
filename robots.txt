@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://themba-pa.com/sitemap.xml
 Sitemap: https://themba-pa.com/resources/sitemap.xml
