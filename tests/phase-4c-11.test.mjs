@@ -69,7 +69,7 @@ test("legacy downloads and source-rendered assets cannot remain public", () => {
   assert.match(redirects, /\/assets\/first-assist-protocol-template\.html \/resources\/consulting\/ 301/);
 });
 
-test("sitemaps expose canonical pages only and preserve nine Hub URLs", () => {
+test("sitemaps expose canonical pages only and preserve the full Hub URL set", () => {
   const rootLocations = [...rootSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   assert.deepEqual(rootLocations, [
     "https://themba-pa.com/",
@@ -77,7 +77,7 @@ test("sitemaps expose canonical pages only and preserve nine Hub URLs", () => {
     "https://themba-pa.com/resources/",
     "https://themba-pa.com/resources/consulting/",
   ]);
-  assert.equal([...hubSitemap.matchAll(/<loc>/g)].length, 9);
+  assert.equal([...hubSitemap.matchAll(/<loc>/g)].length, 15);
   assert.doesNotMatch(`${rootSitemap}\n${hubSitemap}`, /first-assist|zero-turnover|conduit|surgeon-trust|case-volume|governance|contracting/i);
 });
 
