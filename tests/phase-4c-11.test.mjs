@@ -7,6 +7,8 @@ const homepage = read("index.html");
 const redirects = read("_redirects");
 const rootSitemap = read("sitemap.xml");
 const hubSitemap = read("resources/sitemap.xml");
+const resourceHub = read("resources/index.html");
+const resourceHubCss = read("resources/_astro/index.Dpfo-kib.css");
 const conduitRoute = read("resources/conduit-quality-systems-assessment/index.html");
 
 test("main navigation and homepage preview use one canonical resource hub", () => {
@@ -96,6 +98,26 @@ test("Conduit Quality is free, bounded, and not a commerce route", () => {
   assert.match(conduitRoute, /not a clinical assessment/i);
   assert.doesNotMatch(conduitRoute, /\$29|\$399|\$499|payhip|checkout|account|login/i);
   assert.doesNotMatch(conduitRoute, /localStorage|sessionStorage|sendBeacon|fetch\s*\(/i);
+});
+
+test("Resource Hub selector publishes six problem-first pathways with explicit hidden state", () => {
+  const choices = [...resourceHub.matchAll(/name="starting-situation" value="([^"]+)"/g)].map(([, value]) => value);
+  assert.deepEqual(choices, [
+    "retention",
+    "onboarding",
+    "preceptor",
+    "or-integration",
+    "conduit-quality",
+    "adaptation",
+  ]);
+  assert.equal((resourceHub.match(/data-pathway="/g) || []).length, 6);
+  assert.match(resourceHubCss, /\.selector-recommendation[^}]*\[hidden\][^}]*display:none!important/);
+  const conduitPathway = resourceHub.match(/data-pathway="conduit-quality"[\s\S]*?(?=data-pathway="adaptation")/)?.[0] || "";
+  assert.match(conduitPathway, /START FREE[\s\S]*Conduit Quality Systems Assessment/);
+  assert.match(conduitPathway, /FREE[\s\S]*INTERACTIVE WEB TOOL/);
+  assert.match(conduitPathway, /href="\/resources\/conduit-quality-systems-assessment\/"/);
+  assert.match(conduitPathway, /ADAPT — OPTIONAL[\s\S]*APP Onboarding and Team-Readiness Consulting/);
+  assert.doesNotMatch(conduitPathway, /\$29|checkout|payhip/i);
 });
 
 test("phase adds no capture, tracking, storage, CRM, database, or accounts", () => {
