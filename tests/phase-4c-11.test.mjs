@@ -7,6 +7,7 @@ const homepage = read("index.html");
 const redirects = read("_redirects");
 const rootSitemap = read("sitemap.xml");
 const hubSitemap = read("resources/sitemap.xml");
+const conduitRoute = read("resources/conduit-quality-systems-assessment/index.html");
 
 test("main navigation and homepage preview use one canonical resource hub", () => {
   assert.match(homepage, /<li><a href="\/resources\/">Resources<\/a><\/li>/);
@@ -69,7 +70,7 @@ test("legacy downloads and source-rendered assets cannot remain public", () => {
   assert.match(redirects, /\/assets\/first-assist-protocol-template\.html \/resources\/consulting\/ 301/);
 });
 
-test("sitemaps expose canonical pages only and preserve fifteen Hub URLs", () => {
+test("sitemaps expose canonical pages only and preserve sixteen Hub URLs", () => {
   const rootLocations = [...rootSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   assert.deepEqual(rootLocations, [
     "https://themba-pa.com/",
@@ -77,15 +78,24 @@ test("sitemaps expose canonical pages only and preserve fifteen Hub URLs", () =>
     "https://themba-pa.com/resources/",
     "https://themba-pa.com/resources/consulting/",
   ]);
-  assert.equal([...hubSitemap.matchAll(/<loc>/g)].length, 15);
+  assert.equal([...hubSitemap.matchAll(/<loc>/g)].length, 16);
   for (const route of [
     "or-integration-first-step-guide",
     "app-first-90-day-onboarding-toolkit",
     "app-preceptor-accountability-toolkit",
+    "conduit-quality-systems-assessment",
     "privacy",
     "terms",
   ]) assert.match(hubSitemap, new RegExp(`/resources/${route}/`));
-  assert.doesNotMatch(`${rootSitemap}\n${hubSitemap}`, /first-assist|zero-turnover|conduit|surgeon-trust|case-volume|governance|contracting/i);
+  assert.doesNotMatch(`${rootSitemap}\n${hubSitemap}`, /first-assist|zero-turnover|surgeon-trust|case-volume|governance|contracting/i);
+});
+
+test("Conduit Quality is free, bounded, and not a commerce route", () => {
+  assert.match(conduitRoute, /Conduit Quality Systems Assessment/);
+  assert.match(conduitRoute, /FREE|free pilot/i);
+  assert.match(conduitRoute, /not a clinical assessment/i);
+  assert.doesNotMatch(conduitRoute, /\$29|\$399|\$499|payhip|checkout|account|login/i);
+  assert.doesNotMatch(conduitRoute, /localStorage|sessionStorage|sendBeacon|fetch\s*\(/i);
 });
 
 test("phase adds no capture, tracking, storage, CRM, database, or accounts", () => {
