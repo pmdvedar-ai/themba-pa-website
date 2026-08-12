@@ -8,7 +8,7 @@ const redirects = read("_redirects");
 const rootSitemap = read("sitemap.xml");
 const hubSitemap = read("resources/sitemap.xml");
 const resourceHub = read("resources/index.html");
-const resourceHubCss = read("resources/_astro/index.Dpfo-kib.css");
+const resourceHubCss = read("resources/_astro/index.LlLlE54n.css");
 const conduitRoute = read("resources/conduit-quality-systems-assessment/index.html");
 
 test("main navigation and homepage preview use one canonical resource hub", () => {
@@ -117,7 +117,7 @@ test("Resource Hub selector publishes seven problem-first pathways with explicit
   assert.match(resourceHubCss, /\.selector-recommendation[^}]*\[hidden\][^}]*display:none!important/);
   const conduitPathway = resourceHub.match(/data-pathway="conduit-quality"[\s\S]*?(?=data-pathway="adaptation")/)?.[0] || "";
   assert.match(conduitPathway, /START FREE[\s\S]*Conduit Quality Systems Assessment/);
-  assert.match(conduitPathway, /FREE[\s\S]*INTERACTIVE WEB TOOL/);
+  assert.match(conduitPathway, /FREE[\s\S]*Web Tool/);
   assert.match(conduitPathway, /href="\/resources\/conduit-quality-systems-assessment\/"/);
   assert.match(conduitPathway, /ADAPT — OPTIONAL[\s\S]*APP Onboarding and Team-Readiness Consulting/);
   assert.doesNotMatch(conduitPathway, /\$29|checkout|payhip/i);
