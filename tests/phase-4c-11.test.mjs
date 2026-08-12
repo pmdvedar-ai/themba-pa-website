@@ -72,7 +72,7 @@ test("legacy downloads and source-rendered assets cannot remain public", () => {
   assert.match(redirects, /\/assets\/first-assist-protocol-template\.html \/resources\/consulting\/ 301/);
 });
 
-test("sitemaps expose canonical pages only and preserve sixteen Hub URLs", () => {
+test("sitemaps expose canonical pages only and preserve eighteen Hub URLs", () => {
   const rootLocations = [...rootSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   assert.deepEqual(rootLocations, [
     "https://themba-pa.com/",
@@ -80,16 +80,18 @@ test("sitemaps expose canonical pages only and preserve sixteen Hub URLs", () =>
     "https://themba-pa.com/resources/",
     "https://themba-pa.com/resources/consulting/",
   ]);
-  assert.equal([...hubSitemap.matchAll(/<loc>/g)].length, 16);
+  assert.equal([...hubSitemap.matchAll(/<loc>/g)].length, 18);
   for (const route of [
     "or-integration-first-step-guide",
     "app-first-90-day-onboarding-toolkit",
     "app-preceptor-accountability-toolkit",
     "conduit-quality-systems-assessment",
+    "case-volume-development-review-guide",
+    "case-volume-competency-implementation-pack",
     "privacy",
     "terms",
   ]) assert.match(hubSitemap, new RegExp(`/resources/${route}/`));
-  assert.doesNotMatch(`${rootSitemap}\n${hubSitemap}`, /first-assist|zero-turnover|surgeon-trust|case-volume|governance|contracting/i);
+  assert.doesNotMatch(`${rootSitemap}\n${hubSitemap}`, /first-assist|zero-turnover|surgeon-trust|governance|contracting/i);
 });
 
 test("Conduit Quality is free, bounded, and not a commerce route", () => {
@@ -100,7 +102,7 @@ test("Conduit Quality is free, bounded, and not a commerce route", () => {
   assert.doesNotMatch(conduitRoute, /localStorage|sessionStorage|sendBeacon|fetch\s*\(/i);
 });
 
-test("Resource Hub selector publishes six problem-first pathways with explicit hidden state", () => {
+test("Resource Hub selector publishes seven problem-first pathways with explicit hidden state", () => {
   const choices = [...resourceHub.matchAll(/name="starting-situation" value="([^"]+)"/g)].map(([, value]) => value);
   assert.deepEqual(choices, [
     "retention",
@@ -108,9 +110,10 @@ test("Resource Hub selector publishes six problem-first pathways with explicit h
     "preceptor",
     "or-integration",
     "conduit-quality",
+    "development-visibility",
     "adaptation",
   ]);
-  assert.equal((resourceHub.match(/data-pathway="/g) || []).length, 6);
+  assert.equal((resourceHub.match(/data-pathway="/g) || []).length, 7);
   assert.match(resourceHubCss, /\.selector-recommendation[^}]*\[hidden\][^}]*display:none!important/);
   const conduitPathway = resourceHub.match(/data-pathway="conduit-quality"[\s\S]*?(?=data-pathway="adaptation")/)?.[0] || "";
   assert.match(conduitPathway, /START FREE[\s\S]*Conduit Quality Systems Assessment/);
